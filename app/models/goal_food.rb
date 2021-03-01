@@ -1,4 +1,4 @@
 class GoalFood < ApplicationRecord
   belongs_to :goal
-  has_many :foods
+  belongs_to :food
 end

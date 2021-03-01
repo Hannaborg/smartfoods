@@ -2,7 +2,7 @@ class CreateGoalFoods < ActiveRecord::Migration[6.0]
   def change
     create_table :goal_foods do |t|
       t.references :goal, null: false, foreign_key: true
-
+      t.references :food, null: false, foreign_key: true
       t.timestamps
     end
   end

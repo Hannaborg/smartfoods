@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
-  # has_many :foods, through: :RecipeFood
-  # has_many :users, through: :FavoriteRecipe
+  has_many :recipe_foods
+  has_many :foods, through: :recipe_foods
+  has_many :favorite_recipes
+  has_many :users, through: :favorite_recipes
 end
