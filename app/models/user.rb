@@ -10,4 +10,6 @@ class User < ApplicationRecord
   has_many :foods, through: :shopping_lists
   has_many :favorite_recipes
   has_many :recipes, through: :favorite_recipes
+
+  validates :email, uniqueness: true, presence: true
 end
