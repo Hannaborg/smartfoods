@@ -1,21 +1,23 @@
 class UserGoalsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     @goals = Goal.all
   end
 
   def new
     @user = current_user
-    @goal = Goal.new
+    @goals = Goal.all
+    @user_goals = UserGoal.new
   end
 
   def create
-    @goal = Goal.new
-    @goal.user = current_user
-    if @goal.save
-      redirect_to goal_path(@goal)
-    else
-      render :new
+    @goals = Goal.all
+    current_user.user_goals.destroy_all
+    params["array"].each do |key, value|
+      UserGoal.create(goal: @goals[key.to_i], user: current_user)
     end
+      redirect_to foods_path
   end
 
 end
