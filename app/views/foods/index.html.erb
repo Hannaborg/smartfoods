@@ -1,8 +1,8 @@
 <h1> Foods List </h1>
 <% @selected_goals.each do |goal| %>
     <h1> <%= goal.title %> </h1>
-    <%= goal.foods.each do |food| %>
-    <p><%= food.title %></p>
+    <% goal.foods.each do |food| %>
+    <p><%= food.name %></p>
     <p><%= food.description %></p>
     <% end %>
 <% end %>
