@@ -1,13 +1,5 @@
 <h1>Goals</h1>
 
-<%#= simple_form_for(@user_goals) do |f| %>
-  <%# @goals.each do |goal| %>
-    <%#= f.input :goal, as: :boolean, label: "#{goal.title}" %>
-  <%# end %>
-  <%#= f.association :goals, as: :check_boxes %>
-  <%#= f.submit %>
-<%# end %>
-
 <form action="/user_goals" method="post">
   <% counter=0 %>
   <% @goals.each do |goal| %>
