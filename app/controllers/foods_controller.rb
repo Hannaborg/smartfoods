@@ -1,5 +1,6 @@
 class FoodsController < ApplicationController
 	def index
-		@food = Food.all
+		@user = current_user
+	    @selected_goals = @user.goals
 	end
 end
