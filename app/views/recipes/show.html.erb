@@ -1,2 +1,12 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<h1><%= @recipe.title %></h1>
+  <h3>Description:</h2>
+  <p><%= @recipe.description %></p>
+  <h3>Time:</h2>
+  <p><%= @recipe.cooking_time %>minutes</p>
+  <h3>Rating:</h2>
+  <% @recipe.rating.to_i.times do  %>
+    <i class="fas fa-star"></i>
+  <% end %>
+ 
+
+<p><%= link_to 'Back', food_recipes_path %></p>
