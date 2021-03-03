@@ -15,5 +15,10 @@ end
   resources :shopping_lists, only: %i[ index ]
   resources :favorite_recipes, only: %i[ index destroy ]
   resources :user_goals, only: %i[ index create new ]
-  resources :user_views, only: %i[ index ]
+  resources :users, only: %i[ ] do
+    collection do
+      get :profile
+    end
+end
+
 end
