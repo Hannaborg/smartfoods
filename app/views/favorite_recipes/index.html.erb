@@ -1,8 +1,8 @@
 <h1>My saved recipes!</h1>
-<% current_user.favorite_recipes.each do |recipe| %>
-  <h1><%= recipe.title %></h1>
+<% @favorite_recipes.each do |favorite| %>
+  <h1><%= favorite.recipe.title %></h1>
   
-   <p><%= link_to "Delete", favorite_recipes_path, method: :delete %></p>
+   <p><%= link_to "Delete", favorite_recipes_path, method: :delete %>  <%= link_to "Show",  food_recipe_path(:food_id, @recipe,) %></p>
  <% end %>
 
  <div class="plain-text-button">
