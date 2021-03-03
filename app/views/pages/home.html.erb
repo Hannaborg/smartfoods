@@ -1,4 +1,7 @@
-<h1>Welcome to SmartFoods</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<%= link_to "Get Started", new_user_goal_path %>
+<div class="banner" style="background-image: url(<%= image_path "acre.png" %>)">
+  <div class="container text-center">
+    <h1>Welcome to SmartFoods</h1>
+    <p>Find the right foods, personalized just for you, so you can achieve your health goals.</p>
+    <%= link_to "Get Started", new_user_goal_path, type: "button", class: "btn btn-outline-light" %>
+  </div>
+</div>

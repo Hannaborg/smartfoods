@@ -1,17 +1,20 @@
 class FavoriteRecipesController < ApplicationController
   def index
+    @user = current_user
     @favorite_recipes = FavoriteRecipe.all
   end
 
   def create
-    @favorite_recipe = FavoriteRecipe.new(favorite_params)
+    @recipe = Recipe.find(params[:recipe_id])
+    @favorite_recipe = FavoriteRecipe.new()
+    @favorite_recipe.recipe = @recipe
     @favorite_recipe.user = current_user
     if @favorite_recipe.save
       flash[:success] = "Recipe successfully saved"
-      redirect_to  food_recipes_path
+      redirect_to favorite_recipes_path
     else
       flash[:error] = "Something went wrong"
-      redirect_to  food_recipe_path
+      redirect_to food_recipe_path
     end
   end
 
@@ -26,9 +29,4 @@ class FavoriteRecipesController < ApplicationController
     end
   end
 
-  private
-
-  def favorite_params
-    params.require(:favorite_recipe).permit()
-  end
 end
