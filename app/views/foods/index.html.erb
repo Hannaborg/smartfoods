@@ -4,8 +4,14 @@
     <% goal.foods.each do |food| %>
     <p><%= food.name %></p>
     <p><%= food.description %></p>
+    <%= link_to "add to the shopping list", food_shopping_lists_path(food), method: :post, class:"btn btn-dark" %>
+    <% if food.shopping_lists.where(user: current_user.id)!=[] %>
+    <i class="fas fa-check-square"></i>
+    <% end %>
     <p><%= link_to 'show recipes', food_recipes_path(food) %></p>
     <% end %>
 <% end %>
+
+<%= link_to "See shopping_list", shopping_lists_path %>
 
 
