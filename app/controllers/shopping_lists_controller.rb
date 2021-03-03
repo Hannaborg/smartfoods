@@ -1,16 +1,28 @@
 class ShoppingListsController < ApplicationController
   def index
-    @shopping_lists = ShoppingList.all
+    @shopping_lists = ShoppingList.where(user: current_user.id)
+    @foods = current_user.foods
   end
 
   def create
     puts params
-    @shopping_list = ShoppingList.create(shopping_list_params)
+    @user = current_user
+    @food = Food.find(params[:food_id])
+    if @food.shopping_lists.where(user: current_user.id)!=[]
+      @food.shopping_lists.where(user: current_user.id).destroy_all
+    else
+      @shopping_list = ShoppingList.new
+      @shopping_list.user = @user
+      @shopping_list.food = @food
+      @shopping_list.save 
+    end
+    redirect_to foods_path
   end
 
   def destroy
     puts params
     ShoppingList.find(params[:shopping_list]).destroy
+    redirect_to foods_path
   end
 
   private
