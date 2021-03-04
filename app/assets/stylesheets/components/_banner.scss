@@ -1,8 +1,11 @@
 .banner {
   color: white;
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   padding: 150px 0;
   height: 100vh;
+  padding-top: 20%;
 }
 
 .banner h1 {
