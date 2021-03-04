@@ -4,6 +4,10 @@ class FavoriteRecipesController < ApplicationController
     @favorite_recipes = FavoriteRecipe.all
   end
 
+  def show 
+    @recipe = Recipe.find(params[:recipe_id])
+  end
+
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @favorite_recipe = FavoriteRecipe.new()
