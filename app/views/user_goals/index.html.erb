@@ -1,6 +1,6 @@
-<h1>Goals</h1>
+  <h1>Goals</h1>
 
-<% @goals.each do |goal| %>
-<h2><%= goal.title %></h2>
-<%= link_to goal_foods_path(goal.id) %>
-<% end %>
+  <% @goals.each do |goal| %>
+  <h2><%= goal.title %></h2>
+  <%= link_to goal_foods_path(goal.id) %>
+  <% end %>

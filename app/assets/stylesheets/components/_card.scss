@@ -1,0 +1,22 @@
+.small-card {
+  background-color: $cream-white;
+  border: none;
+  padding-right: 0;
+}
+
+.big-card {
+  background-color: white;
+  text-align: center;
+}
+
+.big-card img {
+  height: 300px;
+  width: 500px;
+  border-radius: 3px;
+  margin: auto;
+}
+
+.big-card p {
+  max-width: 500px;
+  margin: auto;
+}

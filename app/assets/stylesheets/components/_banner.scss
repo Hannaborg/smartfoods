@@ -1,14 +1,19 @@
 .banner {
   color: white;
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   padding: 150px 0;
   height: 100vh;
+  padding: 16%;
 }
 
 .banner h1 {
   font-size: 60px;
+  padding: 24px 0;
 }
 
 .banner p {
   font-sixe: 30px;
+  padding: 16px 0;
 }
