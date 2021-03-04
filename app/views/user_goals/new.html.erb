@@ -1,11 +1,13 @@
-<h1>Goals</h1>
+<div class="container text-center">
+  <h1>Goals</h1>
 
-<form action="/user_goals" method="post">
-  <% counter=0 %>
-  <% @goals.each do |goal| %>
-    <input type="checkbox" name=array[<%= counter %>]>
-    <label for=<%= goal.title %>> <%= goal.title %> </label>
-    <% counter+=1 %>
-  <% end %>
-  <input type="submit" value="submit">
-</form>
+  <form action="/user_goals" method="post">
+    <% counter=0 %>
+    <% @goals.each do |goal| %>
+      <input type="checkbox" name=array[<%= counter %>]>
+      <label for=<%= goal.title %>> <%= goal.title %> </label>
+      <% counter+=1 %>
+    <% end %>
+    <input type="submit" value="submit">
+  </form>
+</div>
