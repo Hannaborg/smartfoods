@@ -1,6 +1,21 @@
 <h1>List of recipes for <%= @food.name %></h1>
-<% @recipes.each do |recipe| %>
-  <p><%= recipe.title %><%= link_to '+', food_recipe_path(@food, recipe) %></p>
-<% end %>
-<%= link_to 'Back', foods_path %>
 
+<div class="container">
+  <div class="row">
+    <div class="row recipe-index-container">
+      <% @recipes.each do |recipe| %>
+        <div class="col-3">
+          <div class="recipe-index-container">
+            <div class="card-recipe col-sm p-0">
+              <img src="app/assets/images/recipe.jpg" class="card-img-top" alt="...">
+              <div class="card-info" >
+                <h5 class="card-title"><%= recipe.title %></h5>
+                <p class="card-text"><%= recipe.description %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
