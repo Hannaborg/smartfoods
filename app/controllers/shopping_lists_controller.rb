@@ -1,7 +1,7 @@
 class ShoppingListsController < ApplicationController
   def index
     @shopping_lists = ShoppingList.where(user: current_user.id)
-    @foods = current_user.foods
+    #@foods = current_user.foods
   end
 
   def create
@@ -21,8 +21,8 @@ class ShoppingListsController < ApplicationController
 
   def destroy
     puts params
-    ShoppingList.find(params[:shopping_list]).destroy
-    redirect_to foods_path
+    ShoppingList.find(params[:id]).destroy
+    redirect_to shopping_lists_path
   end
 
   private
