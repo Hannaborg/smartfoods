@@ -1,17 +1,25 @@
-<h1> Foods List </h1>
-<% @selected_goals.each do |goal| %>
-    <h1> <%= goal.title %> </h1>
-        <% goal.foods.each do |food| %>
-            <p><%= food.name %></p>
-            <p><%= food.description %></p>
-            <%= link_to "add to the shopping list", food_shopping_lists_path(food), method: :post, class:"btn btn-dark" %>
-            <% if food.shopping_lists.where(user: current_user.id)!=[] %>
+<div class="container">
+  <h1 class="text-center">List of foods to help you with...</h1>
+  <% @selected_goals.each do |goal| %>
+    <div>
+      <h1 class="text-center p-0"><%= goal.title %></h1>
+      <% goal.foods.each do |food| %>
+        <div class="food-card d-flex">
+          <div class="row">
+            <div>
+              <h3><strong><%= food.name %></strong></h3>
+              <p><%= food.description %></p>
+            </div>
+            <div>
+              <%= link_to "Add to Shopping List", food_shopping_lists_path(food), method: :post, class: "btn btn-outline-dark my-2" %>
+              <% if food.shopping_lists.where(user: current_user.id)!=[] %>
                 <i class="fas fa-check-square"></i>
-            <% end %>
-            <p><%= link_to 'show recipes', food_recipes_path(food) %></p>
+              <% end %>
+              <p><%= link_to 'Show Recipes', food_recipes_path(food), class: "btn btn-outline-dark my-1" %></p>
+            </div>
+          </div>
+        </div>
         <% end %>
-<% end %>
-
-<%= link_to "See shopping_list", shopping_lists_path %>
-
-
+    </div>
+  <% end %>
+</div>
