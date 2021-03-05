@@ -1,7 +1,28 @@
 .small-card {
   background-color: $cream-white;
   border: none;
-  padding-right: 0;
+  width: 200px;
+}
+
+.small-card img {
+  margin: auto;
+  margin-top: 16px;
+  width: 180px;
+  height: 180px;
+}
+
+.small-card h3 {
+  margin: auto;
+  margin-top: 16px;
+  font-size: 24px;
+}
+
+.small-card p {
+  margin: auto;
+  margin-top: 8px;
+  max-width: 250px;
+  font-size: 16px;
+  opacity: 0.7;
 }
 
 .big-card {
@@ -13,7 +34,11 @@
   height: 300px;
   width: 500px;
   border-radius: 3px;
-  margin: auto;
+  margin: 0;
+}
+
+.big-card h2 {
+  color: $green;
 }
 
 .big-card p {
