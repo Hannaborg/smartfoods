@@ -1,10 +1,10 @@
 <div class="container text-center">
-  <h1>List of recipes for <%= @food.name %></h1>
+  <h1>Recipes with <%= @food.name %></h1>
   <div class="card-deck py-5">
     <div class="d-flex p-0 py-5 row">
     <% @recipes.each do |recipe| %>
       <div class="card col-6 col-lg-3 card-recipe">
-        
+
           <%# <img class="card-img-top" src="images/recipe.png" alt="..."> %>
           <%= image_tag "recipe.png", class: "card-img-top" %>
         <div class="card-body">
@@ -13,17 +13,17 @@
           </div>
           <div class="row card-body">
             <div class="card-text col-4 border-right">
-              <p><%= recipe.cooking_time %> m</p>
+              <p><%= recipe.cooking_time %>min</p>
             </div>
             <div class="card-text col-8">
             <% recipe.rating.to_i.times do  %>
               <i class="fas fa-star"></i>
             <% end %>
-            </div>       
             </div>
-            <div class= "my-2"> 
-              <%= link_to 'show more',  food_recipe_path(@food, recipe), class: "btn btn-primary" %>
-          </div>  
+            </div>
+            <div class= "my-2">
+              <%= link_to 'show more',  food_recipe_path(@food, recipe), class: "btn btn-outline-dark" %>
+          </div>
         </div>
       </div>
     <% end %>
