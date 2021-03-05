@@ -1,21 +1,32 @@
-<h1>List of recipes for <%= @food.name %></h1>
-
-<div class="container">
-  <div class="row">
-    <div class="row recipe-index-container">
-      <% @recipes.each do |recipe| %>
-        <div class="col-3">
-          <div class="recipe-index-container">
-            <div class="card-recipe col-sm p-0">
-              <img src="app/assets/images/recipe.jpg" class="card-img-top" alt="...">
-              <div class="card-info" >
-                <h5 class="card-title"><%= recipe.title %></h5>
-                <p class="card-text"><%= recipe.description %></p>
-              </div>
-            </div>
+<div class="container text-center">
+  <h1>List of recipes for <%= @food.name %></h1>
+  <div class="card-deck py-5">
+    <div class="d-flex p-0 py-5 row">
+    <% @recipes.each do |recipe| %>
+      <div class="card col-6 col-lg-3 card-recipe">
+        
+          <%# <img class="card-img-top" src="images/recipe.png" alt="..."> %>
+          <%= image_tag "recipe.png", class: "card-img-top" %>
+        <div class="card-body">
+          <div class="card-title border-bottom">
+            <h5><%= recipe.title %></h5>
           </div>
+          <div class="row card-body">
+            <div class="card-text col-4 border-right">
+              <p><%= recipe.cooking_time %> m</p>
+            </div>
+            <div class="card-text col-8">
+            <% recipe.rating.to_i.times do  %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            </div>       
+            </div>
+            <div class= "my-2"> 
+              <%= link_to 'show more',  food_recipe_path(@food, recipe), class: "btn btn-primary" %>
+          </div>  
         </div>
-      <% end %>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>
