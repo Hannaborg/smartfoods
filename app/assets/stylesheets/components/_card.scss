@@ -28,13 +28,13 @@
 .big-card {
   background-color: white;
   text-align: center;
+  justify-content: center;
 }
 
 .big-card img {
   height: 300px;
   width: 500px;
   border-radius: 3px;
-  margin: 0;
 }
 
 .big-card h2 {
@@ -44,4 +44,5 @@
 .big-card p {
   max-width: 500px;
   margin: auto;
+  opacity: 0.8;
 }
