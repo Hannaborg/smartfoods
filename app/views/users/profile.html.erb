@@ -5,9 +5,10 @@
     <p><strong>Email: </strong><%= @user.email %></p>
   </div>
 
-  <div class="white-container d-flex justify-content-between">
+  <div class="white-container d-flex">
     <div>
       <h3>My Goals</h3>
+      <br>
       <% @current_user.goals.each do |goal| %>
         <p><strong> <%= goal.title %> </strong></p>
       <% end %>

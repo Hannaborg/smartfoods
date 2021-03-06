@@ -1,0 +1,29 @@
+.btn-outline-green {
+  color: $dark-green;
+  border: 1px solid $dark-green;
+  border-radius: 3px;
+  padding: 8px 16px;
+  transition: 0.3s ease;
+}
+
+.btn-outline-green:hover {
+  color: white;
+  background-color: $dark-green;
+  text-decoration: none;
+}
+
+.btn-green {
+  color: white;
+  background-color: $dark-green;
+  border-radius: 3px;
+  padding: 8px 16px;
+  transition: 0.3s ease;
+}
+
+.btn-green:hover {
+  color: $dark-green;
+  border: 1px solid $dark-green;
+  background-color: white;
+  text-decoration: none;
+}
+
