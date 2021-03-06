@@ -1,0 +1,13 @@
+.white-container {
+  background-color: white;
+  padding: 16px;
+  margin: 16px auto;
+  max-width: 500px;
+  border: thin solid $green;
+  border-radius: 2px;
+  line-height: 32px;
+}
+
+.white-container h3 {
+  margin-bottom: 16px;
+}

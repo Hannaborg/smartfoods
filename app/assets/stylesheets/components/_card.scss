@@ -15,6 +15,7 @@
   margin: auto;
   margin-top: 16px;
   font-size: 24px;
+  color: $dark-green;
 }
 
 .small-card p {
@@ -23,6 +24,7 @@
   max-width: 250px;
   font-size: 16px;
   opacity: 0.7;
+  text-align: center;
 }
 
 .big-card {
@@ -37,20 +39,16 @@
   border-radius: 3px;
 }
 
-.big-card h2 {
-  color: $green;
-}
-
 .big-card p {
   max-width: 500px;
-  margin: auto;
+  margin: 24px auto;
   opacity: 0.8;
 }
 
-.card-recipe{
+.card-recipe {
   padding: 0px;
 }
-.card-img-top{
+.card-img-top {
   height: 120px;
   width: 100%;
 }
@@ -58,8 +56,4 @@
 .food-card {
   padding: 24px;
   width: 400px;
-}
-
-.food-card h3 {
-  color: $green;
 }

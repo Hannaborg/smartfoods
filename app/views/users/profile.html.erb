@@ -1,7 +1,18 @@
-<h1>My Account</h1>
-<%= @user.email %>
-<% @current_user.goals.each do |goal| %>
-    <h1> <%= goal.title %> </h1>
-<% end %>
-<br>
-<%= link_to "Update My Goals", new_user_goal_path, class:"btn btn-dark" %>
+  <h1>My Account</h1>
+
+  <div class="white-container">
+    <p><strong>Name: </strong><%= @user.first_name %> <%= @user.last_name %></p>
+    <p><strong>Email: </strong><%= @user.email %></p>
+  </div>
+
+  <div class="white-container d-flex justify-content-between">
+    <div>
+      <h3>My Goals</h3>
+      <% @current_user.goals.each do |goal| %>
+        <p><strong> <%= goal.title %> </strong></p>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "Update My Goals", new_user_goal_path, class:"btn btn-light" %>
+    </div>
+  </div>
