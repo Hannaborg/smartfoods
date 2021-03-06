@@ -1,25 +1,22 @@
-<div class="shop_title">
-    <h1>Shopping List</h1>
-</div>
+<div class="container">
+  <h1>Shopping List</h1>
 
-<div class="list" id="food_shopping_list">
+  <div class="list" id="food_shopping_list">
     <ul class="list-group">
-        <% @shopping_lists.each do |shopping_list| %>
-            <li class="list-group-item d-flex justify-content-between">
-            <div class="pretty p-default p-round">
-                <input type="checkbox" />
-                <div class="state p-success-o">
-                    <label><%= shopping_list.food.name %></label>
-                </div>
-            </div>
-            <%= link_to food_shopping_list_path(shopping_list.food, shopping_list), method: :delete do %>
-                <i class="far fa-trash-alt"></i>
-            <% end %>
-            </li>
+      <% @shopping_lists.each do |shopping_list| %>
+        <li class="list-group-item d-flex justify-content-between">
+        <div class="pretty p-default p-round">
+          <input type="checkbox" />
+          <div class="state p-success-o">
+            <label><%= shopping_list.food.name %></label>
+          </div>
+        </div>
+        <%= link_to food_shopping_list_path(shopping_list.food, shopping_list), method: :delete do %>
+          <i class="far fa-trash-alt"></i>
         <% end %>
+        </li>
+      <% end %>
     </ul>
+  </div>
+  <%= link_to "Back to Foods", foods_path, class:"btn btn-dark" %>
 </div>
-<div class="page_btn">
-    <%= link_to "Back", foods_path, class:"btn btn-dark" %>
-</div>
-

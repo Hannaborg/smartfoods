@@ -1,17 +1,15 @@
-<div class="container" style="height: 100vh">
-  <h1><%= @recipe.title %></h1>
-    <div class="container">
-      <h3>Description:</h2>
-      <p><%= @recipe.description %></p>
-      <h3>Time:</h2>
-      <p><%= @recipe.cooking_time %>minutes</p>
-      <h3>Rating:</h2>
-      <% @recipe.rating.to_i.times do  %>
-        <i class="fas fa-star"></i>
-      <% end %>
-    </div>
-  <div class="container py-5">
-    <%= link_to 'Save', recipe_favorite_recipes_path(@recipe), method: :post, class: "btn btn-outline-dark" %>
-    <%= link_to 'Back', food_recipes_path, class: "btn btn-outline-dark" %>
+<h1><%= @recipe.title %></h1>
+  <div class="container">
+    <h3>Description:</h3>
+    <p><%= @recipe.description %></p>
+    <h3>Cooking time:</h3>
+    <p><%= @recipe.cooking_time %> min</p>
+    <h3>Rating:</h3>
+    <% @recipe.rating.to_i.times do %>
+      <i class="fas fa-star"></i>
+    <% end %>
   </div>
+<div class="container py-4">
+  <%= link_to 'Back', food_recipes_path, class: "btn btn-outline-dark" %>
+  <%= link_to 'Save', recipe_favorite_recipes_path(@recipe), method: :post, class: "btn btn-outline-dark" %>
 </div>
