@@ -1,32 +1,13 @@
-
-.shop_title h1 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
-    margin-top: 25px;
-}
-
 .list {
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-bottom: 15px;
+ margin: 5% 25%;
 }
 
 .pretty {
-    margin-left: 10px;
-    margin-top: 2px;
-    display: flex;
-    justify-content: space-around;
+  margin: auto 0;
+  display: flex;
+  justify-content: space-around;
 }
-
-
 
 .pretty .state label:after, .pretty .state label:before {
-    top: 1px !important;
-}
-
-.page_btn {
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-bottom: 25px;
+  margin: auto !important;
 }
