@@ -3,10 +3,11 @@
   <div class="card-deck">
     <div class="d-flex p-0 py-5 row">
       <% @recipes.each do |recipe| %>
-        <div class="card col-6 col-lg-3 card-recipe">
+      
+        <div class="card col-6 col-lg-3 card-recipe" data-toggle="modal" data-target="#exampleModalLong">
           <%= image_tag "recipe.png", class: "card-img-top" %>
           <div class="card-body">
-            <div class="card-title border-bottom">
+            <div class="card-title pb-2 border-bottom">
               <h5><%= recipe.title %></h5>
             </div>
             <div class="row card-body">
@@ -19,11 +20,11 @@
               <% end %>
               </div>
             </div>
-            <div class= "row justify-content-center mt-2">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+            <%# <div class= "row justify-content-center mt-2">
+              <button type="button" class="btn btn-green-small" data-toggle="modal" data-target="#exampleModalLong">
                 show more
               </button>
-            </div>
+            </div> %>
           </div>
         </div>
       <% end %>
@@ -33,62 +34,60 @@
 
 
 <% @recipes.each do |recipe| %>
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header m-0 p-0">
-        <%= image_tag "recipe.png", class: "card-img-top" %>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row ml-2  border-bottom">
-          <h3 class="modal-title col-5 align-middle" id="exampleModalLongTitle"><%= recipe.title %></h3>
-          <p class="col-4 py-2 d-inline">
-            <% recipe.rating.to_i.times do  %>
-                <i class="fas fa-star"></i>
-            <% end %>
-
-          </p>
-          <p><i class="far fa-clock col-3 py-2"><%= recipe.cooking_time %>m</i></p>
-
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header m-0 p-0">
+          <%= image_tag "recipe.png", class: "card-img-top" %>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="row mt-2 border-bottom">
-          <div class="col-2 modal-doses">
-            <ul>
-              <li>50g</li>
-              <li>1L</li>
-              <li>1ct</li>
-              <li>4mg</li>
-            </ul>
+        <div class="modal-body">
+          <div class="row ml-2  border-bottom">
+            <h3 class="modal-title col-5 align-middle" id="exampleModalLongTitle"><%= recipe.title %></h3>
+            <p class="col-4 py-2 d-inline">
+              <% recipe.rating.to_i.times do  %>
+                  <i class="fas fa-star"></i>
+              <% end %>
+            </p>
+            <p><i class="far fa-clock col-3 py-2"><%= recipe.cooking_time %>m</i></p>
           </div>
-          <div class="col-2">
-            <ul>
-              <li>Salt</li>
-              <li>Milk</li>
-              <li>pepper</li>
-              <li>rice</li>
-            </ul>
+          <div class="row mt-2 border-bottom">
+            <div class="col-2 modal-doses">
+              <ul>
+                <li>50g</li>
+                <li>1L</li>
+                <li>1ct</li>
+                <li>4mg</li>
+              </ul>
+            </div>
+            <div class="col-2">
+              <ul>
+                <li>Salt</li>
+                <li>Milk</li>
+                <li>pepper</li>
+                <li>rice</li>
+              </ul>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-7">
+              <ol>
+                <li>Mix all ingredients in a bowl until dough like.</li>
+                <li>Form tablespoon sized balls</li>
+                <li>Bake at 350°F for 8 to 10 minutes enjoy</li>
+              </ol>
+            </div>
           </div>
-          <div class="col-1"></div>
-          <div class="col-7">
-            <ol>
-              <li>Mix all ingredients in a bowl until dough like.</li>
-              <li>Form tablespoon sized balls</li>
-              <li>Bake at 350°F for 8 to 10 minutes enjoy</li>
-            </ol>
+          <div class="mt-2">
+            <%= recipe.description %>
           </div>
         </div>
-        <div class="mt-2">
-          <%= recipe.description %>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save Recipe</button>
         </div>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save Recipe</button>
       </div>
     </div>
   </div>
-</div>
-
+<% end %>
