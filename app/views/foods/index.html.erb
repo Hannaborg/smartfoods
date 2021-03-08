@@ -2,7 +2,7 @@
   <h1>List of foods to help you with...</h1>
   <% counter = 0 %>
   <% @selected_goals.each do |goal| %>
-    <div>
+    <div class="text-center">
       <h1 class="text-center goalid" ><%= goal.title %></h1>
       <% goal.foods[1..3].each do |food| %>
         <div class="d-flex">
@@ -44,7 +44,7 @@
           </div>
         </div>
       <% end %>
-      <div class="toggle-button-<%= counter %> btn-green show-more">Show more items</div>
+      <div class="toggle-button-<%= counter %> btn btn-green my-3 show-more">Show more</div>
     </div>
     <% counter = counter + 1 %>
   <% end %>
