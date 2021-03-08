@@ -8,10 +8,14 @@
   justify-content: space-between;
 }
 
+
+
 //Foods page
 .food-container {
   align-items: center;
   padding: 16px 0;
+  max-width: 800px;
+  margin: auto;
 }
 
 .food-container img {
