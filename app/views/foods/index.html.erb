@@ -1,10 +1,11 @@
 <div class="container">
   <h1>List of foods to help you with...</h1>
+  <% counter = 0 %>
   <% @selected_goals.each do |goal| %>
     <div>
-      <h1 class="text-center"><%= goal.title %></h1>
-      <% goal.foods.each do |food| %>
-        <div>
+      <h1 class="text-center goalid" ><%= goal.title %></h1>
+      <% goal.foods[1..3].each do |food| %>
+        <div class="d-flex">
           <div class="row food-container">
             <%= image_tag "broccoli.svg" %>
             <div class="p-3 w-50">
@@ -21,7 +22,33 @@
             </div>
           </div>
         </div>
-        <% end %>
+      <% end %>
+      <% goal.foods[4..-1].each do |food| %>
+        <div class="foodlist-name-<%= counter %> hidden">
+          <div class="d-flex">
+            <div class="row food-container">
+              <%= image_tag "broccoli.svg" %>
+              <div class="p-3 w-50">
+                <h3><strong><%= food.name %></strong></h3>
+                <p><%= food.description %></p>
+              </div>
+              <div class="p-3 ml-auto text-right">
+                <% if food.shopping_lists.where(user: current_user.id)!=[] %>
+                <p><%= link_to "Add to Shopping List", food_shopping_lists_path(food), method: :post, class: "btn btn-success" %><p>
+                <% else %>
+                <p><%= link_to "Add to Shopping List", food_shopping_lists_path(food), method: :post, class: "btn btn-outline-green" %><p>
+                <% end %>
+                <p><%= link_to 'Show Recipes', food_recipes_path(food), class: "btn btn-outline-green" %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="toggle-button-<%= counter %> btn-green show-more">Show more items</div>
     </div>
+    <% counter = counter + 1 %>
   <% end %>
+  <div>
+    <%= link_to "Back", new_user_goal_path, class:"btn-green"%>
+  </div>
 </div>
