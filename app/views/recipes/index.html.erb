@@ -3,13 +3,7 @@
   <div class="card-deck ">
     <div class="d-flex row py-5 px-2">
       <% @recipes.each do |recipe| %>
-<<<<<<< HEAD
-
         <div class="card col-6 col-lg-3 card-recipe" data-toggle="modal" data-target="#exampleModalLong">
-=======
-      
-        <div class="card col-3 card-recipe" data-toggle="modal" data-target="#exampleModalLong">
->>>>>>> 11eea5bad3b2f35bf6bc00bb2f49bbf1983dbe14
           <%= image_tag "recipe.png", class: "card-img-top" %>
           <div class="card-body">
             <div class="card-title pb-2 border-bottom">
@@ -35,9 +29,6 @@
       <% end %>
     </div>
   </div>
-    <div>
-      <%= link_to "Back", foods_path, class:"btn-green"%>
-    </div>
 </div>
 
 
