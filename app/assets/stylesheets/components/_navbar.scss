@@ -9,11 +9,9 @@
 }
 
 .profile-name {
-  background-color: #F9F6F1;
-  color: black;
-  padding: 2px;
+  padding: 3px;
   font-size: 16px;
-  border: none;
+  opacity: 0.7;
 }
 
 .nav-item {
@@ -31,17 +29,16 @@
 }
 
 .dropdown-menu a {
-  color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.dropdown-menu a:hover {background-color: #ddd;}
+.dropdown-menu a:hover {background-color: #dddd;}
 
 .nav-item:hover .dropdown-menu {display: block;}
 
-.nav-item:hover .profile-name {text-shadow: 2px 2px 4px #484848;}
+.nav-item:hover .profile-name {opacity: 1}
 
 .badge-cart {
   padding-left: 9px;
@@ -54,5 +51,5 @@
   color: #073E27;
   padding: 2px 5px;
   vertical-align: top;
-  margin-left: -10px; 
+  margin-left: -10px;
 }

@@ -12,9 +12,9 @@
               <h3><strong><%= food.name %></strong></h3>
               <p><%= food.description %></p>
             </div>
-            <div class="p-3 ml-auto text-right">
+            <div class="ml-auto text-right">
               <% if food.shopping_lists.where(user: current_user.id)!=[] %>
-              <p><%= link_to "Add to Shopping List", food_shopping_lists_path(food), method: :post, class: "btn btn-success" %><p>
+              <p><%= link_to "Add to Shopping List", food_shopping_lists_path(food), method: :post, class: "btn btn-green" %><p>
               <% else %>
               <p><%= link_to "Add to Shopping List", food_shopping_lists_path(food), method: :post, class: "btn btn-outline-green" %><p>
               <% end %>
@@ -48,4 +48,7 @@
     </div>
     <% counter = counter + 1 %>
   <% end %>
+  <div>
+    <%= link_to "Back", new_user_goal_path, class:"btn-green"%>
+  </div>
 </div>
