@@ -48,6 +48,7 @@
 .card-recipe {
   background-color: rgba(169, 241, 161, 0.575);
   padding: 0px;
+  width: 350px;
   box-shadow: 0px 0px 0px grey;
   -webkit-transition:  box-shadow .6s ease-out;
   box-shadow: .8px .9px 3px grey;
@@ -62,4 +63,9 @@
 .card-img-top {
   height: 120px;
   width: 100%;
+}
+
+.card-deck {
+  display: flex;
+  justify-content: center;
 }
