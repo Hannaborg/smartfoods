@@ -10,9 +10,11 @@ require("channels")
 import 'bootstrap';
 
 import { clickFunction } from '../components/click';
+import { showmoreFunction } from '../components/showmore';
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   clickFunction();
+  showmoreFunction();
 });
 
 
