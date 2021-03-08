@@ -2,6 +2,7 @@
   <h1>List of recipes for <%= @food.name %></h1>
   <div class="card-deck ">
     <div class="d-flex row py-5 px-2">
+      <% counter = 0 %>
       <% @recipes.each do |recipe| %>
         <div class="card col-6 col-lg-3 card-recipe" data-toggle="modal" data-target="#exampleModalLong">
           <%= image_tag "recipe.png", class: "card-img-top" %>
@@ -26,14 +27,15 @@
             </div> %>
           </div>
         </div>
+        <% counter += 1 %>
       <% end %>
     </div>
   </div>
 </div>
 
-
+<% counter = 0 %>
 <% @recipes.each do |recipe| %>
-  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal fade" id="exampleModalLong-<%= counter %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header m-0 p-0">
@@ -89,6 +91,7 @@
       </div>
     </div>
   </div>
+  <% counter += 1 %>
 <% end %>
 
 <div class="container">
