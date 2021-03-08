@@ -9,22 +9,18 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  align-items: center;
 }
 
-.clickable i {
-  font-size: 24px;
-  margin-bottom: 10px;
+.clickable:hover {
+  color: $dark-green;
 }
 
-.clickable:hover i {
-  color: $green;
-}
-
-.clickable.active {
+.active {
   color: inherit;
   border-color: inherit;
 }
 
-.clickable.active i {
-  color: $light-green;
+.check-style {
+  visibility: hidden;
 }

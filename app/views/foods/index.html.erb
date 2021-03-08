@@ -12,9 +12,10 @@
               <p><%= food.description %></p>
             </div>
             <div class="p-3 ml-auto text-right">
-              <p><%= link_to "Add to Shopping List", food_shopping_lists_path(food), method: :post, class: "btn btn-outline-green" %><p>
               <% if food.shopping_lists.where(user: current_user.id)!=[] %>
-                <i class="fas fa-check-square"></i>
+              <p><%= link_to "Add to Shopping List", food_shopping_lists_path(food), method: :post, class: "btn btn-success" %><p>
+              <% else %>
+              <p><%= link_to "Add to Shopping List", food_shopping_lists_path(food), method: :post, class: "btn btn-outline-green" %><p>
               <% end %>
               <p><%= link_to 'Show Recipes', food_recipes_path(food), class: "btn btn-outline-green" %></p>
             </div>

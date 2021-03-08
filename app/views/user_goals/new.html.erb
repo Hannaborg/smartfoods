@@ -1,33 +1,18 @@
-<!-- <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-8 text-center">
-      <h1>Goals</h1>
-      <div class="d-flex flex-wrap justify-content-center pt-4">
-
-        <%# @goals.each do |goal| %>
-        <div class="clickable">
-          <small><%#= goal.title %></small>
-        </div>
-        <%# end %>
-
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<div class="container text-center">
-  <h1>Goals</h1>
+<h1>Goals</h1>
+<div class="container">
   <form action="/user_goals" method="post">
     <% counter=0 %>
-    <ul>
+    <div class="text-center my-5">
+    <ul class="row justify-content-center" style="max-width: 700px; margin: auto">
       <% @goals.each do |goal| %>
-        <li>
-          <input type="checkbox" name=array[<%= counter %>]>
+        <li class="clickable">
+          <input class="check-style" type="checkbox" name=array[<%= counter %>] >
           <label for=<%= goal.title %>> <%= goal.title %> </label>
           <% counter+=1 %>
         </li>
       <% end %>
     </ul>
     <input type="submit" value="Submit" class="btn btn-green m-3">
+    </div>
   </form>
 </div>

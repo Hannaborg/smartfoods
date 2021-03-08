@@ -7,9 +7,13 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("packs/click")
 import 'bootstrap';
 
+import { clickFunction } from '../components/click';
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  clickFunction();
+});
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
