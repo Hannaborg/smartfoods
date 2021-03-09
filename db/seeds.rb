@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require 'nokogiri'
+require 'open-uri'
+require 'pry-byebug'
 
 puts "destroying all users"
 puts "destoying all goals"
@@ -37,12 +40,37 @@ goals_titles.each do |goal_title|
   10.times do
     food1 = Food.create!(name: Faker::Food.vegetables, description: Faker::Food.description)
     GoalFood.create!(goal: goal1, food: food1)
-    3.times do
-      recipe1 = Recipe.create!(title: Faker::Food.dish, description: Faker::Food.description, cooking_time: 20, rating: 5)
-      RecipeFood.create!(food: food1, recipe: recipe1)
-    end
+    # 3.times do
+    #   recipe1 = Recipe.create!(title: Faker::Food.dish, description: Faker::Food.description, cooking_time: 20, rating: 5)
+    #   RecipeFood.create!(food: food1, recipe: recipe1)
+    # end
   end
 end
 
 UserGoal.create!(user: user1, goal: Goal.first)
 UserGoal.create!(user: user1, goal: Goal.last)
+
+Food.first(5).each do |food|
+
+  food = food.name.split(" ").join("%20")
+  #food = "pumpkin"
+  html = open("https://www.bonappetit.com/search/#{food}?content=recipe&sort=relevance").read
+  
+  doc = Nokogiri::HTML(html, nil, "utf-8")
+  
+  doc.search(".photo-link").each do |element|
+    #binding.pry
+    href = element.attributes["href"].value
+    recipe_url = "https://www.bonappetit.com#{href}"
+    doc2 = Nokogiri::HTML(open(recipe_url).read, nil, "utf-8")
+    doc2.search(".split-screen-content-header__hed")
+    title = doc2.search(".split-screen-content-header__hed").text
+    description = doc2.search(".container--body-inner").text
+    rating = doc2.search(".gRFxwe").text.to_i
+    #binding.pry
+    recipe1 = Recipe.create(title: title, description: description, rating: rating)
+    RecipeFood.create(food: food, recipe: recipe1)
+  end
+
+end
+    
