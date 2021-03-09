@@ -1,10 +1,12 @@
 const clickFunction = () => {
   console.log("hello");
 
+  const button = document.querySelector(".btn");
   const clickable = document.querySelectorAll(".clickable");
   clickable.forEach((click) => {
     click.addEventListener("click", (event) => {
       event.currentTarget.classList.toggle("active");
+      button.disabled = false;
       console.log(event.currentTarget);
       if (event.currentTarget.children[0].checked) {
         event.currentTarget.children[0].checked = false;
