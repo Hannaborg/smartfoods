@@ -30,7 +30,7 @@ puts "creating recipes..."
 user1 = User.create!(email: "hanna@gmail.com", password: "123456")
 user2 = User.create!(email: "queen@gmail.com", password: "123456")
 
-goals_titles = ["Improved Sleep", "More Energy", "Better Skin", "Better Mood", "Sharper Focus", "Weightloss"]
+goals_titles = ["Immunity", "Sleep", "Stress", "Energy", "Fitness", "Digestion", "Brain", "Hair", "Skin", "Nails", "Heart", "Bones"]
 
 goals_titles.each do |goal_title|
   goal1 = Goal.create!(title: goal_title)
