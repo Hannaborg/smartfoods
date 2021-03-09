@@ -34,49 +34,47 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <div class="row ml-2  border-bottom">
-            <h3 class="modal-title col-5 align-middle" id="exampleModalLongTitle"><%= recipe.title %></h3>
-            <p class="col-4 py-2 d-inline">
+        <div class="m-3">
+          <div class="row mx-2 p-3 border-bottom align-items-center justify-content-between">
+            <h3 class="modal-title" id="exampleModalLongTitle"><%= recipe.title %></h3>
+            <p class="d-inline">
               <% recipe.rating.to_i.times do  %>
-                  <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
               <% end %>
             </p>
-            <p><i class="far fa-clock col-3 py-2"><%= recipe.cooking_time %>m</i></p>
+            <p><i class="far fa-clock"> <%=recipe.cooking_time %> min</i></p>
           </div>
-          <div class="row mt-2 border-bottom">
-            <div class="col-2 modal-doses">
+          <div class="row m-2 py-4 border-bottom">
+            <div>
               <ul>
-                <li>50g</li>
-                <li>1L</li>
-                <li>1ct</li>
-                <li>4mg</li>
+                <li class="py-0">50 g</li>
+                <li class="py-0">1 l</li>
+                <li class="py-0">1 ct</li>
+                <li class="py-0">4 mg</li>
               </ul>
             </div>
-            <div class="col-2">
+            <div>
               <ul>
-                <li>Salt</li>
-                <li>Milk</li>
-                <li>pepper</li>
-                <li>rice</li>
+                <li class="py-0">salt</li>
+                <li class="py-0">milk</li>
+                <li class="py-0">pepper</li>
+                <li class="py-0">rice</li>
               </ul>
             </div>
             <div class="col-1"></div>
-            <div class="col-7">
-              <ol>
-                <li>Mix all ingredients in a bowl until dough like.</li>
-                <li>Form tablespoon sized balls</li>
-                <li>Bake at 350°F for 8 to 10 minutes enjoy</li>
-              </ol>
-            </div>
+            <ol class="p-0">
+              <li class="p-0 my-1">Mix all ingredients in a bowl until dough like.</li>
+              <li class="p-0 my-1">Form tablespoon sized balls</li>
+              <li class="p-0 my-1">Bake at 350°F for 8 to 10 minutes enjoy</li>
+            </ol>
           </div>
-          <div class="mt-2">
+          <div class="p-3">
             <%= recipe.description %>
           </div>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <%= link_to 'Save Recipe', recipe_favorite_recipes_path(recipe), method: :post, class: "btn btn-outline-green" %>
+          <div class="modal-footer p-3 justify-content-between">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%= link_to 'Save Recipe', recipe_favorite_recipes_path(recipe), method: :post, class: "btn btn-outline-green" %>
+          </div>
         </div>
       </div>
     </div>
