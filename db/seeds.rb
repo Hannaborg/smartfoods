@@ -12,6 +12,8 @@ puts "destoying all goals"
 puts "destoying all foods"
 puts "destoying all recipes"
 
+ShoppingList.destroy_all
+FavoriteRecipe.destroy_all
 UserGoal.destroy_all
 GoalFood.destroy_all
 RecipeFood.destroy_all
