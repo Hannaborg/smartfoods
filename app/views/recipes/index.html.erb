@@ -1,23 +1,18 @@
-<div class="container container-recipe">
+<div class="container text-center">
   <h1>List of recipes for <%= @food.name %></h1>
-  <div class="card-deck ">
-    <div class="d-flex justify-content-center row py-5 px-2">
+    <div class="row p-4 justify-content-center" style="margin-bottom: 32px;">
       <% counter = 0 %>
       <% @recipes.each do |recipe| %>
-        <div class="card col-6 col-lg-3 card-recipe" data-toggle="modal" data-target="#exampleModalLong-<%= counter %>">
-          <%= image_tag "recipe.png", class: "card-img-top" %>
-          <div class="card-body">
-            <div class="card-title pb-2 border-bottom">
-              <h5><%= recipe.title %></h5>
-            </div>
-            <div class="row card-body">
-              <div class="card-text col-4 border-right">
-                <p><%= recipe.cooking_time %> m</p>
-              </div>
-              <div class="card-text col-8">
-              <% recipe.rating.to_i.times do  %>
-                <i class="fas fa-star"></i>
-              <% end %>
+        <div class="card card-recipe" data-toggle="modal" data-target="#exampleModalLong-<%= counter %>">
+          <%= image_tag "recipe.png" %>
+          <div class="card-body text-center">
+            <h4 class="card-title p-3 m-0 border-bottom"><%= recipe.title %></h4>
+            <div class="row py-3 m-0 justify-content-center">
+              <p class="border-right px-2"><%= recipe.cooking_time %> min</p>
+              <div class="px-2">
+                <% recipe.rating.to_i.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
               </div>
             </div>
           </div>
@@ -25,7 +20,7 @@
         <% counter += 1 %>
       <% end %>
     </div>
-  </div>
+  <%= link_to "Back", foods_path, class:"btn-green"%>
 </div>
 
 <% counter = 0 %>
@@ -88,7 +83,3 @@
   </div>
   <% counter += 1 %>
 <% end %>
-
-<div class="container">
-  <%= link_to "Back", foods_path, class:"btn-green"%>
-</div>
