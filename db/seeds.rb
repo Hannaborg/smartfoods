@@ -9,6 +9,7 @@ require 'faker'
 require 'nokogiri'
 require 'open-uri'
 require 'byebug'
+require 'pry-byebug'
 
 puts "destroying all users"
 puts "destoying all goals"
@@ -143,3 +144,28 @@ end
 
 UserGoal.create!(user: user1, goal: Goal.first)
 UserGoal.create!(user: user1, goal: Goal.last)
+
+Food.first(5).each do |food|
+
+  food = food.name.split(" ").join("%20")
+  #food = "pumpkin"
+  html = open("https://www.bonappetit.com/search/#{food}?content=recipe&sort=relevance").read
+  
+  doc = Nokogiri::HTML(html, nil, "utf-8")
+  
+  doc.search(".photo-link").each do |element|
+    #binding.pry
+    href = element.attributes["href"].value
+    recipe_url = "https://www.bonappetit.com#{href}"
+    doc2 = Nokogiri::HTML(open(recipe_url).read, nil, "utf-8")
+    doc2.search(".split-screen-content-header__hed")
+    title = doc2.search(".split-screen-content-header__hed").text
+    description = doc2.search(".container--body-inner").text
+    rating = doc2.search(".gRFxwe").text.to_i
+    #binding.pry
+    recipe1 = Recipe.create(title: title, description: description, rating: rating)
+    RecipeFood.create(food: food, recipe: recipe1)
+  end
+
+end
+    
