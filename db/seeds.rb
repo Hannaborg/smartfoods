@@ -43,7 +43,7 @@ user2 = User.create!(email: "queen@gmail.com", password: "123456")
 #     end
 #   end
 # end
-goals_titles = ["Anti-Inflammatory", "Sleep Better", "Anxiety", "Boost Metabolism", "Weightloss", "Digestion", "Memory Boost", "Hair", "Skin", "Weightgain", "Heart", "Bones"]
+goals_titles = ["Reduced Inflammation", "Better Sleep", "Anxiety Relief", "Metabolism Boost", "Healthy Weightloss", "Gut Health", "Memory Boost", "Strong Hair", "Glowing Skin", "Healthy Weightgain", "Good Heart", "Strong Bones"]
 goals_titles.each do |goal_title|
  Goal.create(title: goal_title)
 end
@@ -64,7 +64,7 @@ doc.search(".css-0").each do |food|
 end
 
 weightloss_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Weightloss").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Healthy Weightloss").first, food: food)
 end
 
 weightgain = 'https://www.healthline.com/nutrition/18-foods-to-gain-weight'
@@ -82,7 +82,7 @@ doc.search(".css-0").each do |food|
 end
 
 weightgain_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Weightgain").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Healthy Weightgain").first, food: food)
 end
 
 anti_inflammatory = 'https://www.healthline.com/nutrition/13-anti-inflammatory-foods'
@@ -100,7 +100,7 @@ doc.search(".css-0").each do |food|
 end
 
 anti_inflammatory_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Anti-Inflammatory").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Reduced Inflammation").first, food: food)
 end
 
 sleep_better = 'https://www.healthline.com/nutrition/9-foods-to-help-you-sleep'
@@ -118,7 +118,7 @@ doc.search(".css-0").each do |food|
 end
 
 sleep_better_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Sleep Better").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Better Sleep").first, food: food)
 end
 
 boost_metabolism = 'https://www.healthline.com/nutrition/metabolism-boosting-foods'
@@ -136,7 +136,7 @@ doc.search(".css-0").each do |food|
 end
 
 boost_metabolism_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Boost Metabolism").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Metabolism Boost").first, food: food)
 end
 
 memory_boost = 'https://www.healthline.com/nutrition/11-brain-foods'
@@ -172,7 +172,7 @@ doc.search(".css-0").each do |food|
 end
 
 anxiety_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Anxiety").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Anxiety Relief").first, food: food)
 end
 
 heart = 'https://www.healthline.com/nutrition/heart-healthy-foods'
@@ -190,7 +190,7 @@ doc.search(".css-0").each do |food|
 end
 
 heart_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Heart").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Good Heart").first, food: food)
 end
 
 digestion = 'https://www.healthline.com/nutrition/best-foods-for-digestion'
@@ -208,7 +208,7 @@ doc.search(".css-0").each do |food|
 end
 
 digestion_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Digestion").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Gut Health").first, food: food)
 end
 
 skin = 'https://www.healthline.com/nutrition/12-foods-for-healthy-skin'
@@ -226,7 +226,7 @@ doc.search(".css-0").each do |food|
 end
 
 skin_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Skin").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Glowing Skin").first, food: food)
 end
 
 hair = 'https://www.healthline.com/nutrition/foods-for-hair-growth'
@@ -244,7 +244,7 @@ doc.search(".css-0").each do |food|
 end
 
 hair_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Hair").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Strong Hair").first, food: food)
 end
 
 bone = 'https://www.healthline.com/nutrition/15-calcium-rich-foods'
@@ -262,7 +262,7 @@ doc.search(".css-0").each do |food|
 end
 
 bone_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Bones").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Strong Bones").first, food: food)
 end
 
 UserGoal.create!(user: user1, goal: Goal.first)
