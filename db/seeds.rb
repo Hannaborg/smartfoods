@@ -8,8 +8,6 @@
 require 'faker'
 require 'nokogiri'
 require 'open-uri'
-require 'byebug'
-require 'pry-byebug'
 
 puts "destroying all users"
 puts "destoying all goals"
@@ -282,7 +280,6 @@ Food.all.each do |food|
 
   counter = 0
   doc.search(".photo-link").each do |element|
-    #binding.pry
     break if counter > 5
     href = element.attributes["href"].value
     recipe_url = "https://www.bonappetit.com#{href}"
@@ -291,14 +288,13 @@ Food.all.each do |food|
     title = doc2.search(".split-screen-content-header__hed").text
     description = doc2.search(".container--body-inner").text
     rating = doc2.search(".gRFxwe").text.to_i
-    #binding.pry
     recipe1 = Recipe.new(title: title, description: description, rating: rating)
     puts recipe1.title
     counter += 1
     if recipe1.save
       RecipeFood.create(food: food, recipe: recipe1)
     end
-    
+
   end
 
 end
