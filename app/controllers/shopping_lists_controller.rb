@@ -2,6 +2,14 @@ class ShoppingListsController < ApplicationController
   def index
     @shopping_lists = ShoppingList.where(user: current_user.id)
     #@foods = current_user.foods
+    @markets = Market.all
+        # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+        @markers = @markets.geocoded.map do |market|
+          {
+            lat: market.latitude,
+            lng: market.longitude
+          }
+        end
   end
 
   def create

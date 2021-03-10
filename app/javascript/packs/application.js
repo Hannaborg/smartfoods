@@ -9,10 +9,12 @@ require("@rails/activestorage").start()
 require("channels")
 import 'bootstrap';
 
+import { initMapbox } from '../plugins/init_mapbox';
 import { clickFunction } from '../components/click';
 import { showmoreFunction } from '../components/showmore';
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
+  initMapbox();
   clickFunction();
   showmoreFunction();
 });
