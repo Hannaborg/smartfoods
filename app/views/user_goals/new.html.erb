@@ -1,5 +1,6 @@
-<h1>Goals</h1>
+<h1>What are your goals?</h1>
 <div class="container">
+  <p class="header-description">Select the areas you would like to focus on. <br> Remember... the narrower your focus, the more effective.<br> When you see positive change towards your goal, you will notice a ripple effect in other areas of your health too. So don't underestimate the power of starting small!</p>
   <form action="/user_goals" method="post">
     <% counter=0 %>
     <div class="text-center my-5">
@@ -7,7 +8,7 @@
       <% @goals.each do |goal| %>
         <li class="clickable">
           <input class="check-style" type="checkbox" name=array[<%= counter %>] >
-          <label for=<%= goal.title %>> <%= goal.title %> </label>
+          <label class="m-0" for=<%= goal.title %>> <%= goal.title %> </label>
           <% counter+=1 %>
         </li>
       <% end %>

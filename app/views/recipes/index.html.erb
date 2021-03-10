@@ -1,19 +1,16 @@
 <div class="container text-center">
-  <h1>List of recipes for <%= @food.name %></h1>
-    <div class="row p-4 justify-content-center" style="margin-bottom: 32px;">
+  <h1>List of recipes with <%= @food.name %></h1>
+    <div class="row p-4 mb-4 justify-content-center">
       <% counter = 0 %>
       <% @recipes.each do |recipe| %>
         <div class="card card-recipe" data-toggle="modal" data-target="#exampleModalLong-<%= counter %>">
           <%= image_tag "recipe.png" %>
           <div class="card-body text-center">
             <h4 class="card-title p-3 m-0 border-bottom"><%= recipe.title %></h4>
-            <div class="row py-3 m-0 justify-content-center">
-              <p class="border-right px-2"><%= recipe.cooking_time %> min</p>
-              <div class="px-2">
-                <% recipe.rating.to_i.times do %>
-                  <i class="fas fa-star"></i>
-                <% end %>
-              </div>
+            <div class="p-3 m-0">
+              <% recipe.rating.to_i.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
             </div>
           </div>
         </div>
@@ -36,13 +33,13 @@
         </div>
         <div class="m-3">
           <div class="row mx-2 p-3 border-bottom align-items-center justify-content-between">
-            <h3 class="modal-title" id="exampleModalLongTitle"><%= recipe.title %></h3>
             <p class="d-inline">
               <% recipe.rating.to_i.times do  %>
-                <i class="fas fa-star"></i>
+                <i class="fas fa-star pb-3"></i>
               <% end %>
             </p>
-            <p><i class="far fa-clock"> <%=recipe.cooking_time %> min</i></p>
+            <h3 class="modal-title" id="exampleModalLongTitle"><%= recipe.title %></h3>
+            <!-- <p><i class="far fa-clock"> <%=recipe.cooking_time %> min</i></p> -->
           </div>
           <div class="row m-2 py-4 border-bottom">
             <div>

@@ -1,6 +1,7 @@
 .clickable {
   padding: 40px;
   width: 180px;
+  height: 140px;
   border: 1px solid #dedede;
   color: #a0a0a0;
   margin-right: 10px;
@@ -13,7 +14,7 @@
 }
 
 .clickable:hover {
-  color: $dark-green;
+  color: $green;
 }
 
 .active {
