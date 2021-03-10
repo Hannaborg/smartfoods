@@ -1,14 +1,11 @@
 <div class="container">
   <h1>My Recipes</h1>
   <% @favorite_recipes.each do |favorite| %>
-    <div class="white-container d-flex align-items-center">
-     <div><h3><%= favorite.recipe.title %></h3></div>
-      <div>
-      
-        <%= link_to "Remove", favorite_recipe_path(favorite), method: :delete, class: "btn btn-outline-green" %>
-        <%#= link_to "Show", food_recipe_path(favorite.recipe.foods.first, favorite.recipe), class: "btn btn-light" %>
+    <%= link_to food_recipe_path(favorite.recipe.foods.first, favorite.recipe) do %>
+      <div class="white-container overlay d-flex align-items-center">
+        <h3><%= favorite.recipe.title %></h3>
+        <div><%= link_to "Remove", favorite_recipe_path(favorite), method: :delete, class:"btn btn-outline-green" %></div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-
 </div>
