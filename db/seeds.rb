@@ -270,16 +270,20 @@ end
 UserGoal.create!(user: user1, goal: Goal.first)
 UserGoal.create!(user: user1, goal: Goal.last)
 
-Food.first(5).each do |food|
-
-  food = food.name.split(" ").join("%20")
+Food.all.each do |food|
+  print (".")
+  food1 = food.name.split(" ").join("%20")
   #food = "pumpkin"
-  html = open("https://www.bonappetit.com/search/#{food}?content=recipe&sort=relevance").read
+  puts food1
+  puts food.name
+  html = open("https://www.bonappetit.com/search/#{food1}?content=recipe&sort=relevance").read
 
   doc = Nokogiri::HTML(html, nil, "utf-8")
 
+  counter = 0
   doc.search(".photo-link").each do |element|
     #binding.pry
+    break if counter > 5
     href = element.attributes["href"].value
     recipe_url = "https://www.bonappetit.com#{href}"
     doc2 = Nokogiri::HTML(open(recipe_url).read, nil, "utf-8")
@@ -288,8 +292,13 @@ Food.first(5).each do |food|
     description = doc2.search(".container--body-inner").text
     rating = doc2.search(".gRFxwe").text.to_i
     #binding.pry
-    recipe1 = Recipe.create(title: title, description: description, rating: rating)
-    RecipeFood.create(food: food, recipe: recipe1)
+    recipe1 = Recipe.new(title: title, description: description, rating: rating)
+    puts recipe1.title
+    counter += 1
+    if recipe1.save
+      RecipeFood.create(food: food, recipe: recipe1)
+    end
+    
   end
 
 end
