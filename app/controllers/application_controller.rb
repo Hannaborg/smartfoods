@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
       @shopping_list ||= ShoppingList.where(user: current_user.id)
     end
     helper_method :current_shopping_list
+
+    def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+    end
 end

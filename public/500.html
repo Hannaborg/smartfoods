@@ -1,66 +1,136 @@
+<!--
+Follow me on
+Dribbble: https://dribbble.com/supahfunk
+Twitter: https://twitter.com/supahfunk
+Codepen: https://codepen.io/supah/
+
+Picture by Ales Krivec https://unsplash.com/photos/ZSI-wuA49T0
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <title>500 Error</title>
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+  <style type="text/css">
+    /*-------------------- Body --------------------*/
+    html, body {
+      height: 100%;
+      background: linear-gradient(0, #202239, #8595ac);
+    }
+    ::selection {
+      background: #cdd4de;
+    }
+    /*-------------------- Page --------------------*/
+    .page {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 600px;
+      z-index: 1;
+      font-family: Roboto, sans-serif;
+      background: #0D0C1E;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+    }
+    /*-------------------- Content --------------------*/
+    .content {
+      text-align: center;
+      padding-top: 118px;
+      color: #cdd4de;
+    }
+    .content h1 {
+      font-weight: 900;
+      font-size: 165px;
+      line-height: 1;
+      margin-bottom: -10px;
+      opacity: 0.6;
+    }
+    .content h2 {
+      font-weight: 700;
+      font-size: 34px;
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+    .content p {
+      font-weight: 300;
+      font-size: 14px;
+      opacity: 0.7;
+      margin-bottom: 140px;
+    }
+/*    .content a {
+      display: inline-block;
+      font-weight: 300;
+      font-size: 12px;
+      text-transform: uppercase;
+      border: 1px solid #cdd4de;
+      padding: 8px 14px;
+      border-radius: 4px;
+      opacity: 0.4;
+      cursor: pointer;
+    }*/
+    /*-------------------- Image --------------------*/
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: -1;
+      transform: scale(1.1);
+    }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
   </style>
 </head>
-
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+<body>
+  <div class="page">
+    <div class="content">
+      <h1>500</h1>
+      <h2>Page not found</h2>
+      <p>I tried to catch some fog, but i mist</p>
+      <!-- <a>back to home</a> -->
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+      <img src="http://www.supah.it/dribbble/008/008.jpg" />
   </div>
+
+  <script type="text/javascript">
+    var lFollowX = 0,
+      lFollowY = 0,
+      x = 0,
+      y = 0,
+      friction = 1 / 30;
+
+    function animate() {
+      x += (lFollowX - x) * friction;
+      y += (lFollowY - y) * friction;
+
+      translate = 'translate(' + x + 'px, ' + y + 'px) scale(1.1)';
+
+      $('img').css({
+        '-webit-transform': translate,
+        '-moz-transform': translate,
+        'transform': translate
+      });
+
+    window.requestAnimationFrame(animate);
+    }
+
+    $(window).on('mousemove click', function(e) {
+
+    var lMouseX = Math.max(-100, Math.min(100, $(window).width() / 2 - e.clientX));
+    var lMouseY = Math.max(-100, Math.min(100, $(window).height() / 2 - e.clientY));
+    lFollowX = (20 * lMouseX) / 100; // 100 : 12 = lMouxeX : lFollow
+    lFollowY = (10 * lMouseY) / 100;
+
+    });
+
+    animate();
+  </script>
 </body>
+
+
 </html>
