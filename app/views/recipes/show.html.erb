@@ -1,11 +1,11 @@
-<div class="container w-50">
+<div class="recipe-container">
   <h1><%= @recipe.title %></h1>
   <div class="text-center">
     <% @recipe.rating.to_i.times do %>
       <i class="fas fa-star mb-4"></i>
     <% end %>
   </div>
-
+  <%= image_tag "recipe.png" %>
   <h3>Description:</h3>
   <br>
   <p><%= @recipe.description %></p>
