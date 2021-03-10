@@ -1,15 +1,13 @@
-<h1><%= @recipe.title %></h1>
-  <div class="container">
-    <h3>Description:</h3>
-    <p><%= @recipe.description %></p>
-    <h3>Cooking time:</h3>
-    <p><%= @recipe.cooking_time %> min</p>
-    <h3>Rating:</h3>
+<div class="recipe-container">
+  <h1><%= @recipe.title %></h1>
+  <div class="text-center">
     <% @recipe.rating.to_i.times do %>
-      <i class="fas fa-star"></i>
+      <i class="fas fa-star mb-4"></i>
     <% end %>
   </div>
-<div class="container py-4">
-  <%= link_to 'Back', food_recipes_path, class: "btn btn-outline-green" %>
-  <%= link_to 'Save', recipe_favorite_recipes_path(@recipe), method: :post, class: "btn btn-outline-green" %>
+  <%= image_tag "recipe.png" %>
+  <h3>Description:</h3>
+  <br>
+  <p><%= @recipe.description %></p>
+  <%= link_to 'Back', food_recipes_path, class: "btn btn-outline-green mt-4" %>
 </div>
