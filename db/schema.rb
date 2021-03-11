@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2022_03_01_155830) do
     t.string "title"
   end
 
+
   create_table "ingredients", force: :cascade do |t|
     t.string "quantity"
     t.string "description"
@@ -53,6 +54,14 @@ ActiveRecord::Schema.define(version: 2022_03_01_155830) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
+
+  create_table "markets", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "recipe_foods", force: :cascade do |t|
