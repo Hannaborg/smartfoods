@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2022_03_01_155832) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "url"
   end
 
   create_table "goal_foods", force: :cascade do |t|
