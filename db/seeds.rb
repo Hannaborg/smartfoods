@@ -312,6 +312,8 @@ Food.all.each do |food|
         end
       end
     end
+  end
+end
 
 #Icon fetch API
 Food.all.each do |food|
