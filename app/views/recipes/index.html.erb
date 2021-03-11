@@ -42,20 +42,27 @@
             <!-- <p><i class="far fa-clock"> <%#=recipe.cooking_time %> min</i></p> -->
           </div>
           <div class="row m-2 py-4 border-bottom">
-            <div>
+            <div class="border-bottom pb-4">
               <table>
                 <% recipe.ingredients.each do |ingredient| %>
                   <tr>
-                    <th><%= ingredient.quantity %></th>
-                    <th><%= ingredient.description %></th>
+                    <th class="px-4"><%= ingredient.quantity %></th>
+                    <td><%= ingredient.description %></th>
                   </tr>
                 <% end %>
               </table>
             </div>
-            <div class="col-1"></div>
-            <ol class="p-0">
-              
-            </ol>
+            <div class="py-4">
+              <table>
+                <% recipe.steps.each do |step| %>
+                  <tr class="py-2">
+                    <th><%= step.number %></th>
+                  </tr>
+                  <tr>
+                    <td><%= step.description %></th>
+                  </tr>
+                <% end %>
+              </table>
           </div>
           <div class="p-3">
             <%= recipe.description %>
