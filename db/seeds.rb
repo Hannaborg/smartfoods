@@ -268,8 +268,7 @@ end
 UserGoal.create!(user: user1, goal: Goal.first)
 UserGoal.create!(user: user1, goal: Goal.last)
 
-Food.all.each do |food|
-  print (".")
+Food.all.each do |food|)
   food1 = food.name.split(" ").join("%20")
   #food = "pumpkin"
   puts food1
@@ -288,11 +287,22 @@ Food.all.each do |food|
     title = doc2.search(".split-screen-content-header__hed").text
     description = doc2.search(".container--body-inner").text
     rating = doc2.search(".gRFxwe").text.to_i
-    recipe1 = Recipe.new(title: title, description: description, rating: rating)
+    ingredients_number = doc2.search(".jqizJz.nEToO").text.split("")
+    ingredients = []
+    doc2.search(".jqizJz.beTuLZ").each do |element|
+      ingredients << element.text
+    end
+
+
+    steps = doc2.search(".cvwWNz").text
+    recipe1 = Recipe.new(title: title, description: description, rating: rating, cooking_time: 20)
     puts recipe1.title
     counter += 1
     if recipe1.save
       RecipeFood.create(food: food, recipe: recipe1)
+      ingredients.each_with_index do |element, index|
+        Ingredient.create(quantity: ingredients_number[index], description: element, recipe: recipe1)
+      end
     end
 
   end
