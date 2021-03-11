@@ -1,13 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'json'
+require 'rest_client'
 require 'faker'
 require 'nokogiri'
 require 'open-uri'
+require 'byebug'
 
 puts "destroying all users"
 puts "destroying all goals"
@@ -35,22 +31,10 @@ puts "creating markets..."
 user1 = User.create!(email: "hanna@gmail.com", password: "123456")
 user2 = User.create!(email: "queen@gmail.com", password: "123456")
 
-# goals_titles.each do |goal_title|
-#   goal1 = Goal.create!(title: goal_title)
-#   10.times do
-#     food1 = Food.create!(name: Faker::Food.vegetables, description: Faker::Food.description)
-#     GoalFood.create!(goal: goal1, food: food1)
-#     3.times do
-#       recipe1 = Recipe.create!(title: Faker::Food.dish, description: Faker::Food.description, cooking_time: 20, rating: 5)
-#       RecipeFood.create!(food: food1, recipe: recipe1)
-#     end
-#   end
-# end
-goals_titles = ["Anti-Inflammatory", "Sleep Better", "Anxiety", "Boost Metabolism", "Weightloss", "Digestion", "Memory Boost", "Hair", "Skin", "Weightgain", "Heart", "Bones"]
+goals_titles = ["Reduced Inflammation", "Better Sleep", "Anxiety Relief", "Metabolism Boost", "Healthy Weightloss", "Gut Health", "Memory Boost", "Strong Hair", "Glowing Skin", "Healthy Weightgain", "Good Heart", "Strong Bones"]
 goals_titles.each do |goal_title|
  Goal.create(title: goal_title)
 end
-
 
 weightloss = 'https://www.healthline.com/nutrition/20-most-weight-loss-friendly-foods'
 doc = Nokogiri::HTML(open(weightloss), nil, 'utf-8')
@@ -67,7 +51,7 @@ doc.search(".css-0").each do |food|
 end
 
 weightloss_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Weightloss").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Healthy Weightloss").first, food: food)
 end
 
 weightgain = 'https://www.healthline.com/nutrition/18-foods-to-gain-weight'
@@ -85,7 +69,7 @@ doc.search(".css-0").each do |food|
 end
 
 weightgain_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Weightgain").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Healthy Weightgain").first, food: food)
 end
 
 anti_inflammatory = 'https://www.healthline.com/nutrition/13-anti-inflammatory-foods'
@@ -103,7 +87,7 @@ doc.search(".css-0").each do |food|
 end
 
 anti_inflammatory_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Anti-Inflammatory").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Reduced Inflammation").first, food: food)
 end
 
 sleep_better = 'https://www.healthline.com/nutrition/9-foods-to-help-you-sleep'
@@ -121,7 +105,7 @@ doc.search(".css-0").each do |food|
 end
 
 sleep_better_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Sleep Better").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Better Sleep").first, food: food)
 end
 
 boost_metabolism = 'https://www.healthline.com/nutrition/metabolism-boosting-foods'
@@ -139,7 +123,7 @@ doc.search(".css-0").each do |food|
 end
 
 boost_metabolism_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Boost Metabolism").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Metabolism Boost").first, food: food)
 end
 
 memory_boost = 'https://www.healthline.com/nutrition/11-brain-foods'
@@ -175,7 +159,7 @@ doc.search(".css-0").each do |food|
 end
 
 anxiety_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Anxiety").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Anxiety Relief").first, food: food)
 end
 
 heart = 'https://www.healthline.com/nutrition/heart-healthy-foods'
@@ -193,7 +177,7 @@ doc.search(".css-0").each do |food|
 end
 
 heart_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Heart").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Good Heart").first, food: food)
 end
 
 digestion = 'https://www.healthline.com/nutrition/best-foods-for-digestion'
@@ -211,7 +195,7 @@ doc.search(".css-0").each do |food|
 end
 
 digestion_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Digestion").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Gut Health").first, food: food)
 end
 
 skin = 'https://www.healthline.com/nutrition/12-foods-for-healthy-skin'
@@ -229,7 +213,7 @@ doc.search(".css-0").each do |food|
 end
 
 skin_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Skin").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Glowing Skin").first, food: food)
 end
 
 hair = 'https://www.healthline.com/nutrition/foods-for-hair-growth'
@@ -247,7 +231,7 @@ doc.search(".css-0").each do |food|
 end
 
 hair_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Hair").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Strong Hair").first, food: food)
 end
 
 bone = 'https://www.healthline.com/nutrition/15-calcium-rich-foods'
@@ -265,7 +249,7 @@ doc.search(".css-0").each do |food|
 end
 
 bone_foods.each do |food|
-  GoalFood.create(goal: Goal.where(title: "Bones").first, food: food)
+  GoalFood.create(goal: Goal.where(title: "Strong Bones").first, food: food)
 end
 
 UserGoal.create!(user: user1, goal: Goal.first)
@@ -273,9 +257,7 @@ UserGoal.create!(user: user1, goal: Goal.last)
 
 Food.all.each do |food|
   food1 = food.name.split(" ").join("%20")
-  #food = "pumpkin"
-  puts food1
-  puts food.name
+
   html = open("https://www.bonappetit.com/search/#{food1}?content=recipe&sort=relevance").read
 
   doc = Nokogiri::HTML(html, nil, "utf-8")
@@ -285,20 +267,36 @@ Food.all.each do |food|
     break if counter > 5
     href = element.attributes["href"].value
     recipe_url = "https://www.bonappetit.com#{href}"
+
+    ingredients = []
+    steps = []
     doc2 = Nokogiri::HTML(open(recipe_url).read, nil, "utf-8")
     doc2.search(".split-screen-content-header__hed")
     title = doc2.search(".split-screen-content-header__hed").text
     description = doc2.search(".container--body-inner").text
     rating = doc2.search(".gRFxwe").text.to_i
     ingredients_number = doc2.search(".jqizJz.nEToO").text.split("")
-    ingredients = []
     doc2.search(".jqizJz.beTuLZ").each do |element|
       ingredients << element.text
     end
+    steps_numbers = []
+    steps_descriptions = []
+    doc2.search('.sc-iBPRYJ.sc-fUSoCb.cvwWNz').each do |div|
+      div.search('.bqTNGJ').each do |elem|
+        # p elem.text.strip
+        step_number = elem.search('.sc-ieSyQn.sc-gWnQNU.efdRpC.eilsXT')
+        # p step_number.text.strip
+        step_description = elem.search('.sc-fgOGuH.eLRJRO.cgiMXa.fPrMvi')
+        # p step_description.text.strip
+        steps_numbers << step_number.text.strip
+        steps_descriptions << step_description.text.strip
+      end
+    end
+    p steps_numbers
+    p steps_descriptions
+    
 
-
-    steps = doc2.search(".cvwWNz").text
-    recipe1 = Recipe.new(title: title, description: description, rating: rating, cooking_time: 20)
+    recipe1 = Recipe.new(title: title, description: description, rating: rating, cooking_time: 20,)
     puts recipe1.title
     counter += 1
     if recipe1.save
@@ -306,8 +304,28 @@ Food.all.each do |food|
       ingredients.each_with_index do |element, index|
         Ingredient.create(quantity: ingredients_number[index], description: element, recipe: recipe1)
       end
+      steps_numbers.each do |element|
+        step = Step.create(number: element, recipe: recipe1)
+        steps_descriptions.each do |description|
+          step.description = description
+          step.save!
+        end
+      end
     end
 
+#Icon fetch API
+Food.all.each do |food|
+  endpoint = "https://api.iconfinder.com/v4/icons/search?query=#{food.name}&count=1&license=commercial-nonattribution"
+  headers = { 'Authorization' => 'Bearer Zb7Uz483KKmIa6aUfDl7OpqfMcbbLr1wim64yB7wAAQRaBNpFBmTLKwzpm1xHdG3'}
+  response = RestClient.get(endpoint, headers)
+  icon_info = JSON.parse(response.body)
+  if icon_info["total_count"] == 0
+    food.url = "https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-94-512.png"
+    food.save
+  else
+    icon_url = icon_info["icons"].first["raster_sizes"].last["formats"].last["preview_url"]
+    food.url = icon_url
+    food.save
   end
 
 end

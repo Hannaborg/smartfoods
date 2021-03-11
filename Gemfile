@@ -23,7 +23,7 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'nokogiri'
-
+gem 'rest-client'
 gem 'faker'
 
 # Use Active Storage variant

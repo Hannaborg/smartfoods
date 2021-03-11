@@ -46,6 +46,23 @@
 
 .show-more {
   opacity: 0.7;
-  border-radius: 32px;
+  border-radius: 3px;
   font-weight: lighter;
+}
+
+.arrow-button {
+  font-size: 2.3rem;
+  line-height: 1.3;
+  margin: 0;
+  padding: 16px;
+  text-align: center;
+  color: $dark-green;
+  opacity: 0.5;
+  height: 100%;
+}
+
+.arrow-button:hover {
+  text-decoration: none !important;
+  opacity: 1;
+  color: $dark-green;
 }
