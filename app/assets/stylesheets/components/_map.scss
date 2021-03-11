@@ -1,0 +1,19 @@
+#map {
+  top: 30px;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+  }
+
+.mapboxgl-popup-content {
+  text-align: center;
+}
+
+.mapletters h2 {
+  font-family: $headers-font;
+}
+
+.mapletters p {
+  font-family: $body-font;
+}

@@ -5,9 +5,10 @@ require 'nokogiri'
 require 'open-uri'
 
 puts "destroying all users"
-puts "destoying all goals"
-puts "destoying all foods"
-puts "destoying all recipes"
+puts "destroying all goals"
+puts "destroying all foods"
+puts "destroying all recipes"
+puts "destroying all markets"
 
 ShoppingList.destroy_all
 FavoriteRecipe.destroy_all
@@ -18,11 +19,13 @@ User.destroy_all
 Goal.destroy_all
 Food.destroy_all
 Recipe.destroy_all
+Market.destroy_all
 
 puts "creating user..."
 puts "creating goals..."
 puts "creating foods..."
 puts "creating recipes..."
+puts "creating markets..."
 
 user1 = User.create!(email: "hanna@gmail.com", password: "123456")
 user2 = User.create!(email: "queen@gmail.com", password: "123456")
@@ -260,7 +263,7 @@ Food.all.each do |food|
 
   counter = 0
   doc.search(".photo-link").each do |element|
-    break if counter > 5
+    break if counter > 6
     href = element.attributes["href"].value
     recipe_url = "https://www.bonappetit.com#{href}"
 
@@ -325,4 +328,46 @@ Food.all.each do |food|
     food.url = icon_url
     food.save
   end
+<<<<<<< HEAD
 end
+=======
+
+end
+
+# Lisbon
+Market.create!(name: "Lidl", address: "Rua Maria da Fonte, Lisboa")
+Market.create!(name: "Minipreço", address: "Rua Luciano Cordeiro 38, Lisboa")
+Market.create!(name: "Minipreço", address: "Rua Barata Salgueiro 4, Lisboa")
+Market.create!(name: "Minipreço", address: "Rua de São Bento 15, Lisboa")
+Market.create!(name: "Continente", address: "Avenida Duque de Loulé 96, Lisboa")
+Market.create!(name: "Continente", address: "Rua Almirante Barroso 9, Largo de São Sebastião da Pedreira 9B 9A, Lisboa")
+Market.create!(name: "Continente", address: "Rua Carlos Mardel 4, Lisboa")
+Market.create!(name: "Continente", address: "Travessa de Santa Quitéria 38, Lisboa")
+Market.create!(name: "Sarkar", address: "Rua Luciano Cordeiro 56A, Lisboa")
+Market.create!(name: "El Corte Inglés", address: "Avenida António Augusto de Aguiar 31, Lisboa")
+Market.create!(name: "Mini Mercado Laranja", address: "Rua Silva Carvalho Nr 155-b, Lisboa")
+Market.create!(name: "Pingo Doce", address: "Largo Chão do Loureiro, Lisboa")
+Market.create!(name: "Pingo Doce", address: "Rua 1º de Dezembro 67 83, Lisboa")
+Market.create!(name: "Amanhecer", address: "Rua da Palma 41 A, Lisboa")
+Market.create!(name: "Meu Super", address: "Rua do Alecrim 54, Lisboa")
+
+# Madrid
+Market.create!(name: "El Corte Inglés", address: "Calle de Preciados, 3, 28013 Madrid, Spain")
+
+# Oslo
+Market.create!(name: "MENY Kringsjå", address: "Minister Ditleffs vei 21, 0862 Oslo, Norway")
+Market.create!(name: "MENY Colosseum", address: "Sørkedalsveien 10B, 0369 Oslo, Norway")
+Market.create!(name: "MENY Skøyen", address: "Karenslyst Allé 9, 0278 Oslo, Norway")
+Market.create!(name: "MENY Bogstadveien", address: "Bogstadveien 36, 0366 Oslo, Norway")
+Market.create!(name: "MENY Oslo City", address: "Stenersgata 1, 0050 Oslo, Norway")
+Market.create!(name: "MENY Grønland Torg", address: "Smalgangen 49, 0188 Oslo, Norway")
+Market.create!(name: "MENY Ringnes Park", address: "Sannergata 6C, 0555 Oslo, Norway")
+Market.create!(name: "MENY Fornebu", address: "Snarøyveien 55-57, 1364 Fornebu, Norway")
+Market.create!(name: "MENY Vøyenenga", address: "Vøyenengtunet 14, 1339 Vøyenenga, Norway")
+
+# Paris
+Market.create!(name: "Carrefour", address: "79 Rue de Seine, 75006 Paris, France")
+
+# London
+Market.create!(name: "Tesco", address: "17-25 Regent St, St. James's, London SW1Y 4LR, United Kingdom")
+>>>>>>> 077ef74bb497624f89b7e610c616604a9fb2f70e
