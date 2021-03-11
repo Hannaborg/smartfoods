@@ -1,13 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'json'
+require 'rest_client'
 require 'faker'
 require 'nokogiri'
 require 'open-uri'
+require 'byebug'
 
 puts "destroying all users"
 puts "destoying all goals"
@@ -32,17 +28,6 @@ puts "creating recipes..."
 user1 = User.create!(email: "hanna@gmail.com", password: "123456")
 user2 = User.create!(email: "queen@gmail.com", password: "123456")
 
-# goals_titles.each do |goal_title|
-#   goal1 = Goal.create!(title: goal_title)
-#   10.times do
-#     food1 = Food.create!(name: Faker::Food.vegetables, description: Faker::Food.description)
-#     GoalFood.create!(goal: goal1, food: food1)
-#     3.times do
-#       recipe1 = Recipe.create!(title: Faker::Food.dish, description: Faker::Food.description, cooking_time: 20, rating: 5)
-#       RecipeFood.create!(food: food1, recipe: recipe1)
-#     end
-#   end
-# end
 goals_titles = ["Reduced Inflammation", "Better Sleep", "Anxiety Relief", "Metabolism Boost", "Healthy Weightloss", "Gut Health", "Memory Boost", "Strong Hair", "Glowing Skin", "Healthy Weightgain", "Good Heart", "Strong Bones"]
 goals_titles.each do |goal_title|
  Goal.create(title: goal_title)
@@ -294,7 +279,21 @@ Food.all.each do |food|
     if recipe1.save
       RecipeFood.create(food: food, recipe: recipe1)
     end
-
   end
+end
 
+#Icon fetch API
+Food.all.each do |food|
+  endpoint = "https://api.iconfinder.com/v4/icons/search?query=#{food.name}&count=1&license=commercial-nonattribution"
+  headers = { 'Authorization' => 'Bearer Zb7Uz483KKmIa6aUfDl7OpqfMcbbLr1wim64yB7wAAQRaBNpFBmTLKwzpm1xHdG3'}
+  response = RestClient.get(endpoint, headers)
+  icon_info = JSON.parse(response.body)
+  if icon_info["total_count"] == 0
+    food.url = "https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-94-512.png"
+    food.save
+  else
+    icon_url = icon_info["icons"].first["raster_sizes"].last["formats"].last["preview_url"]
+    food.url = icon_url
+    food.save
+  end
 end

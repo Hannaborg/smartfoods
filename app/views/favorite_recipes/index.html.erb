@@ -1,5 +1,8 @@
 <div class="container">
-  <h1>My Recipes</h1>
+  <div class="d-flex justify-content-center pr-5">
+    <%#= link_to "", food_recipes_path(food), class: "arrow-button fas fa-chevron-left" %>
+    <h1>My Recipes</h1>
+  </div>
   <% @favorite_recipes.each do |favorite| %>
     <%= link_to food_recipe_path(favorite.recipe.foods.first, favorite.recipe), class:"link" do %>
       <div class="white-container no-padding overlay d-flex align-items-center">

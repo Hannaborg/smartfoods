@@ -9,16 +9,16 @@ const showmoreFunction = () => {
         let isHidden = true;
         button.addEventListener('click', () => {
             button.textContent = isHidden
-            ? 'Hide items'
-            : 'Show more items';
-            
+            ? 'Show less'
+            : 'Show more';
+
             isHidden = !isHidden;
             hiddenItems.forEach((item) => {
                 item.classList.toggle('hidden')
             });
         });
         counter = counter + 1
-    });   
+    });
 };
 
 export { showmoreFunction };
