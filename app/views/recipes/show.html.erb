@@ -8,7 +8,23 @@
       <i class="fas fa-star mb-4"></i>
     <% end %>
   </div>
-  <%= image_tag "recipe.png" %>
+  <%= cl_image_tag @recipe.photo.key, crop: :fill %>
+  <h3>Ingredients:</h3>
+  <br>
+  <table>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <tr>
+        <th><%= ingredient.quantity %></th>
+        <td><%= ingredient.description %></th>
+      </tr>
+    <% end %>
+  </table>
+  <h3>Preparation:</h3>
+  <br>
+  <% @recipe.steps.each do |step| %>
+    <h5><%= step.number %></h5>
+    <p><%= step.description %></p>
+  <% end %>
   <h3>Description:</h3>
   <br>
   <p><%= @recipe.description %></p>

@@ -275,6 +275,7 @@ Food.all.each do |food|
     description = doc2.search(".container--body-inner").text
     rating = doc2.search(".gRFxwe").text.to_i
     ingredients_number = doc2.search(".jqizJz.nEToO").text.split("")
+    image = doc2.search(".responsive-image__image")
     doc2.search(".jqizJz.beTuLZ").each do |element|
       ingredients << element.text
     end
@@ -296,6 +297,7 @@ Food.all.each do |food|
 
 
     recipe1 = Recipe.new(title: title, description: description, rating: rating, cooking_time: 20,)
+    recipe1.photo.attach(io: image, filename: 'recipe.png', content_type: 'image/png') 
     puts recipe1.title
     counter += 1
     if recipe1.save
@@ -328,11 +330,9 @@ Food.all.each do |food|
     food.url = icon_url
     food.save
   end
-<<<<<<< HEAD
 end
-=======
 
-end
+# end
 
 # Lisbon
 Market.create!(name: "Lidl", address: "Rua Maria da Fonte, Lisboa")
@@ -370,4 +370,3 @@ Market.create!(name: "Carrefour", address: "79 Rue de Seine, 75006 Paris, France
 
 # London
 Market.create!(name: "Tesco", address: "17-25 Regent St, St. James's, London SW1Y 4LR, United Kingdom")
->>>>>>> 077ef74bb497624f89b7e610c616604a9fb2f70e
