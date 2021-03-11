@@ -3,7 +3,6 @@ require 'rest_client'
 require 'faker'
 require 'nokogiri'
 require 'open-uri'
-require 'byebug'
 
 puts "destroying all users"
 puts "destoying all goals"
@@ -291,7 +290,7 @@ Food.all.each do |food|
     end
     p steps_numbers
     p steps_descriptions
-    
+
 
     recipe1 = Recipe.new(title: title, description: description, rating: rating, cooking_time: 20,)
     puts recipe1.title
@@ -309,6 +308,8 @@ Food.all.each do |food|
         end
       end
     end
+  end
+end
 
 #Icon fetch API
 Food.all.each do |food|
