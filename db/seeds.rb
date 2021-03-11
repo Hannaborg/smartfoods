@@ -277,7 +277,7 @@ Food.all.each do |food|
 
   counter = 0
   doc.search(".photo-link").each do |element|
-    break if counter > 5
+    break if counter > 6
     href = element.attributes["href"].value
     recipe_url = "https://www.bonappetit.com#{href}"
 
