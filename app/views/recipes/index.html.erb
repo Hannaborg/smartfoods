@@ -43,26 +43,18 @@
           </div>
           <div class="row m-2 py-4 border-bottom">
             <div>
-              <ul>
-                <li class="py-0">50 g</li>
-                <li class="py-0">1 l</li>
-                <li class="py-0">1 ct</li>
-                <li class="py-0">4 mg</li>
-              </ul>
-            </div>
-            <div>
-              <ul>
-                <li class="py-0">salt</li>
-                <li class="py-0">milk</li>
-                <li class="py-0">pepper</li>
-                <li class="py-0">rice</li>
-              </ul>
+              <table>
+                <% recipe.ingredients.each do |ingredient| %>
+                  <tr>
+                    <th><%= ingredient.quantity %></th>
+                    <th><%= ingredient.description %></th>
+                  </tr>
+                <% end %>
+              </table>
             </div>
             <div class="col-1"></div>
             <ol class="p-0">
-              <li class="p-0 my-1">Mix all ingredients in a bowl until dough like.</li>
-              <li class="p-0 my-1">Form tablespoon sized balls</li>
-              <li class="p-0 my-1">Bake at 350°F for 8 to 10 minutes enjoy</li>
+              
             </ol>
           </div>
           <div class="p-3">
