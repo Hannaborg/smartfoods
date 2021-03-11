@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_01_155831) do
+ActiveRecord::Schema.define(version: 2022_03_01_155832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2022_03_01_155831) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "quantity"
+    t.string "description"
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
   create_table "markets", force: :cascade do |t|
@@ -83,6 +92,15 @@ ActiveRecord::Schema.define(version: 2022_03_01_155831) do
     t.index ["user_id"], name: "index_shopping_lists_on_user_id"
   end
 
+  create_table "steps", force: :cascade do |t|
+    t.string "number"
+    t.string "description"
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_steps_on_recipe_id"
+  end
+
   create_table "user_goals", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "goal_id", null: false
@@ -110,10 +128,12 @@ ActiveRecord::Schema.define(version: 2022_03_01_155831) do
   add_foreign_key "favorite_recipes", "users"
   add_foreign_key "goal_foods", "foods"
   add_foreign_key "goal_foods", "goals"
+  add_foreign_key "ingredients", "recipes"
   add_foreign_key "recipe_foods", "foods"
   add_foreign_key "recipe_foods", "recipes"
   add_foreign_key "shopping_lists", "foods"
   add_foreign_key "shopping_lists", "users"
+  add_foreign_key "steps", "recipes"
   add_foreign_key "user_goals", "goals"
   add_foreign_key "user_goals", "users"
 end

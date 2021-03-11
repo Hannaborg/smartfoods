@@ -44,28 +44,27 @@
             <!-- <p><i class="far fa-clock"> <%#=recipe.cooking_time %> min</i></p> -->
           </div>
           <div class="row m-2 py-4 border-bottom">
-            <div>
-              <ul>
-                <li class="py-0">50 g</li>
-                <li class="py-0">1 l</li>
-                <li class="py-0">1 ct</li>
-                <li class="py-0">4 mg</li>
-              </ul>
+            <div class="border-bottom pb-4">
+              <table>
+                <% recipe.ingredients.each do |ingredient| %>
+                  <tr>
+                    <th class="px-4"><%= ingredient.quantity %></th>
+                    <td><%= ingredient.description %></th>
+                  </tr>
+                <% end %>
+              </table>
             </div>
-            <div>
-              <ul>
-                <li class="py-0">salt</li>
-                <li class="py-0">milk</li>
-                <li class="py-0">pepper</li>
-                <li class="py-0">rice</li>
-              </ul>
-            </div>
-            <div class="col-1"></div>
-            <ol class="p-0">
-              <li class="p-0 my-1">Mix all ingredients in a bowl until dough like.</li>
-              <li class="p-0 my-1">Form tablespoon sized balls</li>
-              <li class="p-0 my-1">Bake at 350°F for 8 to 10 minutes enjoy</li>
-            </ol>
+            <div class="py-4">
+              <table>
+                <% recipe.steps.each do |step| %>
+                  <tr class="py-2">
+                    <th><%= step.number %></th>
+                  </tr>
+                  <tr>
+                    <td><%= step.description %></th>
+                  </tr>
+                <% end %>
+              </table>
           </div>
           <div class="p-3">
             <%= recipe.description %>

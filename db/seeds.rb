@@ -33,7 +33,6 @@ goals_titles.each do |goal_title|
  Goal.create(title: goal_title)
 end
 
-
 weightloss = 'https://www.healthline.com/nutrition/20-most-weight-loss-friendly-foods'
 doc = Nokogiri::HTML(open(weightloss), nil, 'utf-8')
 weightloss_foods = []
@@ -254,11 +253,8 @@ UserGoal.create!(user: user1, goal: Goal.first)
 UserGoal.create!(user: user1, goal: Goal.last)
 
 Food.all.each do |food|
-  print (".")
   food1 = food.name.split(" ").join("%20")
-  #food = "pumpkin"
-  puts food1
-  puts food.name
+
   html = open("https://www.bonappetit.com/search/#{food1}?content=recipe&sort=relevance").read
 
   doc = Nokogiri::HTML(html, nil, "utf-8")
@@ -268,19 +264,51 @@ Food.all.each do |food|
     break if counter > 5
     href = element.attributes["href"].value
     recipe_url = "https://www.bonappetit.com#{href}"
+
+    ingredients = []
+    steps = []
     doc2 = Nokogiri::HTML(open(recipe_url).read, nil, "utf-8")
     doc2.search(".split-screen-content-header__hed")
     title = doc2.search(".split-screen-content-header__hed").text
     description = doc2.search(".container--body-inner").text
     rating = doc2.search(".gRFxwe").text.to_i
-    recipe1 = Recipe.new(title: title, description: description, rating: rating)
+    ingredients_number = doc2.search(".jqizJz.nEToO").text.split("")
+    doc2.search(".jqizJz.beTuLZ").each do |element|
+      ingredients << element.text
+    end
+    steps_numbers = []
+    steps_descriptions = []
+    doc2.search('.sc-iBPRYJ.sc-fUSoCb.cvwWNz').each do |div|
+      div.search('.bqTNGJ').each do |elem|
+        # p elem.text.strip
+        step_number = elem.search('.sc-ieSyQn.sc-gWnQNU.efdRpC.eilsXT')
+        # p step_number.text.strip
+        step_description = elem.search('.sc-fgOGuH.eLRJRO.cgiMXa.fPrMvi')
+        # p step_description.text.strip
+        steps_numbers << step_number.text.strip
+        steps_descriptions << step_description.text.strip
+      end
+    end
+    p steps_numbers
+    p steps_descriptions
+    
+
+    recipe1 = Recipe.new(title: title, description: description, rating: rating, cooking_time: 20,)
     puts recipe1.title
     counter += 1
     if recipe1.save
       RecipeFood.create(food: food, recipe: recipe1)
+      ingredients.each_with_index do |element, index|
+        Ingredient.create(quantity: ingredients_number[index], description: element, recipe: recipe1)
+      end
+      steps_numbers.each do |element|
+        step = Step.create(number: element, recipe: recipe1)
+        steps_descriptions.each do |description|
+          step.description = description
+          step.save!
+        end
+      end
     end
-  end
-end
 
 #Icon fetch API
 Food.all.each do |food|
