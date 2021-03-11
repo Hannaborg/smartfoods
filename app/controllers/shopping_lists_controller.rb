@@ -7,7 +7,8 @@ class ShoppingListsController < ApplicationController
         @markers = @markets.geocoded.map do |market|
           {
             lat: market.latitude,
-            lng: market.longitude
+            lng: market.longitude,
+            infoWindow: render_to_string(partial: "info_window", locals: { market: market })
           }
         end
   end
