@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
   has_many :ingredients, dependent: :destroy
   has_many :steps, dependent: :destroy
   has_one_attached :image, dependent: :destroy
+  has_one_attached :photo
 
   validates :title, :description, presence: true
 end

@@ -13,12 +13,12 @@ class FavoriteRecipesController < ApplicationController
     @favorite_recipe = FavoriteRecipe.new()
     @favorite_recipe.recipe = @recipe
     @favorite_recipe.user = current_user
-    if @favorite_recipe.save
+    if @favorite_recipe.save!
       flash[:success] = "Recipe successfully saved"
       redirect_to favorite_recipes_path
     else
       flash[:error] = "Something went wrong"
-      redirect_to food_recipe_path
+      redirect_to food_recipe_path(@recipe.food)
     end
   end
 
