@@ -333,11 +333,11 @@ Food.all.each do |food|
   icon_info = JSON.parse(response.body)
   if icon_info["total_count"] == 0
     food.url = "https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-94-512.png"
-    food.save
+    food.save!
   else
     icon_url = icon_info["icons"].first["raster_sizes"].last["formats"].last["preview_url"]
     food.url = icon_url
-    food.save
+    food.save!
   end
 end
 
