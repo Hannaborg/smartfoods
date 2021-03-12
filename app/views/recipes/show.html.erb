@@ -3,11 +3,6 @@
     <%= link_to "", favorite_recipes_path, class: "arrow-button fas fa-chevron-left" %>
     <h1><%= @recipe.title %></h1>
   </div>
-  <div class="text-center">
-    <% @recipe.rating.to_i.times do %>
-      <i class="fas fa-star mb-4"></i>
-    <% end %>
-  </div>
   <%#= image @recipe.photo.key, crop: :fill %>
   <%= image_tag @recipe.photo %>
   <h3>Ingredients:</h3>
