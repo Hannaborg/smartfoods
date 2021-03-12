@@ -8,7 +8,11 @@
     <% @recipes.each do |recipe| %>
 
       <div class="card card-recipe" data-toggle="modal" data-target="#modal_window-<%= recipe.id %>">
-        <%= image_tag recipe.photo %>
+        <% if recipe.photo.attached? %>
+        <%= cl_image_tag recipe.photo %>
+        <% else %>
+        <%= image_tag "recipe.png" %>
+        <% end %>
         <div class="card-body text-center">
           <h4 class="card-title p-3 m-0 border-top border-bottom"><%= recipe.title %></h4>
         </div>
@@ -24,7 +28,11 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header p-0 m-auto">
-          <%= image_tag recipe.photo %>
+        <% if recipe.photo.attached? %>
+          <%= cl_image_tag recipe.photo %>
+        <% else %>
+          <%= image_tag "recipe.png" %>
+        <% end %>
         </div>
         <div>
           <div class="row mx-2 p-3 border-bottom">

@@ -4,7 +4,11 @@
     <h1><%= @recipe.title %></h1>
   </div>
   <%#= image @recipe.photo.key, crop: :fill %>
-  <%= image_tag @recipe.photo %>
+  <% if recipe.photo.attached? %>
+    <%= cl_image_tag @recipe.photo %>
+  <% else %>
+    <%= image_tag "recipe.png" %>
+  <% end %>
 
   <h3>Ingredients:</h3>
   <br>
