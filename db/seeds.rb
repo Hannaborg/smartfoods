@@ -256,7 +256,7 @@ end
 UserGoal.create!(user: user1, goal: Goal.first)
 UserGoal.create!(user: user1, goal: Goal.last)
 
-Food.first(2).each do |food|
+Food.all.each do |food|
   
 puts "finished creating foods according to each goal"
 puts "start creating recipes for each food"
