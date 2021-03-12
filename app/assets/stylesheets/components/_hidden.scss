@@ -1,3 +1,15 @@
 .hidden {
     display: none;
   }
+
+@media screen and (max-width: 480px) {
+  .image-wrapping {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .px-3 {
+    width: 100% !important;
+  }
+}

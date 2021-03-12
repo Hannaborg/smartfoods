@@ -16,12 +16,13 @@
 .recipe-container {
   max-width: 600px;
   margin: auto;
-  object-fit: cover;
+  padding-bottom: 24px;
 }
 
 .recipe-container img {
   width: 100%;
-  height: 100%;
+  height: 400px;
+  object-fit: cover;
   margin-bottom: 16px;
 }
 
