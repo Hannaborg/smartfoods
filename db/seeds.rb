@@ -3,7 +3,6 @@ require 'rest_client'
 require 'faker'
 require 'nokogiri'
 require 'open-uri'
-require "byebug"
 
 puts "destroying all users"
 puts "destroying all goals"
