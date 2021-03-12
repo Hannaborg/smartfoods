@@ -8,8 +8,8 @@
       <i class="fas fa-star mb-4"></i>
     <% end %>
   </div>
-  <%= cl_image_tag @recipe.photo.key, crop: :fill %>
-  <%#= image_tag @recipe.photo %>
+  <%#= image @recipe.photo.key, crop: :fill %>
+  <%= image_tag @recipe.photo %>
   <h3>Ingredients:</h3>
   <br>
   <table>
