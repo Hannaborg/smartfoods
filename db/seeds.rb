@@ -254,7 +254,7 @@ end
 UserGoal.create!(user: user1, goal: Goal.first)
 UserGoal.create!(user: user1, goal: Goal.last)
 
-Food.all.each do |food|
+Food.first(2).each do |food|
   food1 = food.name.split(" ").join("%20")
 
   html = open("https://www.bonappetit.com/search/#{food1}?content=recipe&sort=relevance").read
@@ -275,7 +275,8 @@ Food.all.each do |food|
     description = doc2.search(".container--body-inner").text
     rating = doc2.search(".gRFxwe").text.to_i
     ingredients_number = doc2.search(".jqizJz.nEToO").text.split("")
-    image = doc2.search(".responsive-image__image")
+    image = doc2.search(".grid-layout__span-6 .responsive-image__image")
+
     doc2.search(".jqizJz.beTuLZ").each do |element|
       ingredients << element.text
     end
@@ -295,9 +296,14 @@ Food.all.each do |food|
     p steps_numbers
     p steps_descriptions
 
+    img_url = image.attribute("src").value
+ 
+    img = URI.open(img_url)
+    
+  
 
-    recipe1 = Recipe.new(title: title, description: description, rating: rating, cooking_time: 20,)
-    recipe1.photo.attach(io: image, filename: 'recipe.png', content_type: 'image/png') 
+    recipe1 = Recipe.new(title: title, description: description, rating: rating, cooking_time: 20)
+    recipe1.photo.attach(io: img, filename: 'recipe.png', content_type: 'image/png') 
     puts recipe1.title
     counter += 1
     if recipe1.save
