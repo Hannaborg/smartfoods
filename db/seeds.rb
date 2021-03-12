@@ -328,9 +328,6 @@ Food.all.each do |food|
     food.url = icon_url
     food.save
   end
-<<<<<<< HEAD
-end
-=======
 
 end
 
@@ -370,4 +367,3 @@ Market.create!(name: "Carrefour", address: "79 Rue de Seine, 75006 Paris, France
 
 # London
 Market.create!(name: "Tesco", address: "17-25 Regent St, St. James's, London SW1Y 4LR, United Kingdom")
->>>>>>> 077ef74bb497624f89b7e610c616604a9fb2f70e
