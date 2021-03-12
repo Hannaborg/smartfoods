@@ -3,6 +3,7 @@ require 'rest_client'
 require 'faker'
 require 'nokogiri'
 require 'open-uri'
+require "byebug"
 
 puts "destroying all users"
 puts "destroying all goals"
@@ -20,12 +21,14 @@ Goal.destroy_all
 Food.destroy_all
 Recipe.destroy_all
 Market.destroy_all
+Ingredient.destroy_all
+Step.destroy_all
 
 puts "creating user..."
 puts "creating goals..."
 puts "creating foods..."
 puts "creating recipes..."
-puts "creating markets..."
+puts "start creating foods according to each goal..."
 
 user1 = User.create!(email: "hanna@gmail.com", password: "123456")
 user2 = User.create!(email: "queen@gmail.com", password: "123456")
@@ -254,6 +257,9 @@ end
 UserGoal.create!(user: user1, goal: Goal.first)
 UserGoal.create!(user: user1, goal: Goal.last)
 
+puts "finished creating foods according to each goal"
+puts "start creating recipes for each food"
+
 Food.all.each do |food|
   food1 = food.name.split(" ").join("%20")
 
@@ -267,6 +273,7 @@ Food.all.each do |food|
     href = element.attributes["href"].value
     recipe_url = "https://www.bonappetit.com#{href}"
 
+
     ingredients = []
     steps = []
     doc2 = Nokogiri::HTML(open(recipe_url).read, nil, "utf-8")
@@ -274,18 +281,19 @@ Food.all.each do |food|
     title = doc2.search(".split-screen-content-header__hed").text
     description = doc2.search(".container--body-inner").text
     rating = doc2.search(".gRFxwe").text.to_i
-    ingredients_number = doc2.search(".jqizJz.nEToO").text.split("")
-    doc2.search(".jqizJz.beTuLZ").each do |element|
+    ingredients_number = doc2.search(".jqizJz.sc-jMScns").text.split("")
+    doc2.search(".jqizJz.sc-cuaApf").each do |element|
       ingredients << element.text
     end
+
     steps_numbers = []
     steps_descriptions = []
-    doc2.search('.sc-iBPRYJ.sc-fUSoCb.cvwWNz').each do |div|
-      div.search('.bqTNGJ').each do |elem|
+    doc2.search('.sc-iBPRYJ.sc-dRKXJR.cvwWNz').each do |div|
+      div.search('.jvTHbr').each do |elem|
         # p elem.text.strip
-        step_number = elem.search('.sc-ieSyQn.sc-gWnQNU.efdRpC.eilsXT')
+        step_number = elem.search('.sc-ddQoNp.sc-fgOGuH.efdRpC.eilsXT')
         # p step_number.text.strip
-        step_description = elem.search('.sc-fgOGuH.eLRJRO.cgiMXa.fPrMvi')
+        step_description = elem.search('.sc-dTGQxN.eLRJRO.cgiMXa.gGmQNC')
         # p step_description.text.strip
         steps_numbers << step_number.text.strip
         steps_descriptions << step_description.text.strip
@@ -314,6 +322,9 @@ Food.all.each do |food|
   end
 end
 
+puts "finished creating recipes for each food"
+puts "start fetching icons"
+
 #Icon fetch API
 Food.all.each do |food|
   endpoint = "https://api.iconfinder.com/v4/icons/search?query=#{food.name}&count=1&license=commercial-nonattribution"
@@ -322,14 +333,19 @@ Food.all.each do |food|
   icon_info = JSON.parse(response.body)
   if icon_info["total_count"] == 0
     food.url = "https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-94-512.png"
-    food.save
+    food.save!
   else
     icon_url = icon_info["icons"].first["raster_sizes"].last["formats"].last["preview_url"]
     food.url = icon_url
-    food.save
+    food.save!
   end
-
+<<<<<<< HEAD
+=======
 end
+>>>>>>> bbf166655616f3d5cfe1aa97003c69e92fc31369
+
+puts "finished fetching icons"
+puts "start creating markets"
 
 # Lisbon
 Market.create!(name: "Lidl", address: "Rua Maria da Fonte, Lisboa")
@@ -367,3 +383,5 @@ Market.create!(name: "Carrefour", address: "79 Rue de Seine, 75006 Paris, France
 
 # London
 Market.create!(name: "Tesco", address: "17-25 Regent St, St. James's, London SW1Y 4LR, United Kingdom")
+
+puts "finished creating market"
