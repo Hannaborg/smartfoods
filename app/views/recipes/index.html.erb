@@ -4,22 +4,23 @@
     <h1>List of recipes with <%= @food.name %></h1>
   </div>
   <div class="row mt-4 justify-content-center">
-    <% counter = 0 %>
+
     <% @recipes.each do |recipe| %>
-      <div class="card card-recipe" data-toggle="modal" data-target="#exampleModalLong-<%= counter %>">
+
+      <div class="card card-recipe" data-toggle="modal" data-target="#modal_window-<%= recipe.id %>">
         <%= image_tag recipe.photo %>
         <div class="card-body text-center">
           <h4 class="card-title p-3 m-0 border-top border-bottom"><%= recipe.title %></h4>
         </div>
       </div>
-      <% counter += 1 %>
+
     <% end %>
   </div>
 </div>
 
-<% counter = 0 %>
+
 <% @recipes.each do |recipe| %>
-  <div class="modal fade" id="exampleModalLong-<%= counter %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal fade" id="modal_window-<%= recipe.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header p-0 m-auto">
@@ -58,10 +59,10 @@
           <div class="modal-footer p-3 justify-content-between">
             <button type="button" class="btn btn-green" data-dismiss="modal">Close</button>
             <%= link_to 'Save Recipe', recipe_favorite_recipes_path(recipe), method: :post, class: "btn btn-outline-green" %>
+           </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <% counter += 1 %>
 <% end %>
