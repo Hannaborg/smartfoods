@@ -5,7 +5,7 @@
   </div>
   <%#= image @recipe.photo.key, crop: :fill %>
   <% if recipe.photo.attached? %>
-    <%= cl_image_tag @recipe.photo %>
+    <%= cl_image_tag @recipe.photo.key %>
   <% else %>
     <%= image_tag "recipe.png" %>
   <% end %>
