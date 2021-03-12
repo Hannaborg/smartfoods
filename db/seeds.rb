@@ -273,21 +273,25 @@ Food.first(2).each do |food|
     doc2.search(".split-screen-content-header__hed")
     title = doc2.search(".split-screen-content-header__hed").text
     description = doc2.search(".container--body-inner").text
-    rating = doc2.search(".gRFxwe").text.to_i
-    ingredients_number = doc2.search(".jqizJz.nEToO").text.split("")
-    image = doc2.search(".grid-layout__span-6 .responsive-image__image")
+    rating = doc2.search(".essRkv.hzPuO").text.to_i
+    ingredients_number = doc2.search(".sc-dqxvKW.jdsnAX .jqizJz.ihzyGZ").text.split("")
+    #image = doc2.search(".grid-layout__span-6 .responsive-image__image")
 
-    doc2.search(".jqizJz.beTuLZ").each do |element|
+    p ingredients_number
+    doc2.search(".sc-dqxvKW.jdsnAX .jqizJz.hYYJiv").each do |element|
       ingredients << element.text
     end
+    p ingredients
+    puts "---------"
+    
     steps_numbers = []
     steps_descriptions = []
-    doc2.search('.sc-iBPRYJ.sc-fUSoCb.cvwWNz').each do |div|
-      div.search('.bqTNGJ').each do |elem|
+    doc2.search('.sc-iBPRYJ.sc-ddQoNp.cvwWNz').each do |div|
+      div.search('.eMxrul').each do |elem|
         # p elem.text.strip
-        step_number = elem.search('.sc-ieSyQn.sc-gWnQNU.efdRpC.eilsXT')
+        step_number = elem.search('.sc-eQdLTE.sc-hqOQIT.efdRpC.eilsXT')
         # p step_number.text.strip
-        step_description = elem.search('.sc-fgOGuH.eLRJRO.cgiMXa.fPrMvi')
+        step_description = elem.search('.sc-gdHaLZ.eLRJRO.cgiMXa.geELsm')
         # p step_description.text.strip
         steps_numbers << step_number.text.strip
         steps_descriptions << step_description.text.strip
@@ -296,14 +300,14 @@ Food.first(2).each do |food|
     p steps_numbers
     p steps_descriptions
 
-    img_url = image.attribute("src").value
+    #img_url = image.attribute("src").value
  
-    img = URI.open(img_url)
+    #img = URI.open(img_url)
     
   
 
     recipe1 = Recipe.new(title: title, description: description, rating: rating, cooking_time: 20)
-    recipe1.photo.attach(io: img, filename: 'recipe.png', content_type: 'image/png') 
+    #recipe1.photo.attach(io: img, filename: 'recipe.png', content_type: 'image/png') 
     puts recipe1.title
     counter += 1
     if recipe1.save
