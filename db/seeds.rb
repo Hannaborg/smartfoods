@@ -339,7 +339,10 @@ Food.all.each do |food|
     food.url = icon_url
     food.save!
   end
+<<<<<<< HEAD
+=======
 end
+>>>>>>> bbf166655616f3d5cfe1aa97003c69e92fc31369
 
 puts "finished fetching icons"
 puts "start creating markets"
