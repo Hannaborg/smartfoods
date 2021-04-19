@@ -1,30 +1,28 @@
 <div class="banner" style="background-image: url(<%= image_path "acre.png" %>)">
-  <div class="container">
-    <h1>Welcome to SmartFoods</h1>
-    <p>Find the right foods, personalized just for you, so you can achieve your health goals.</p>
-    <%= link_to "Get Started", new_user_goal_path, type: "button", class: "btn btn-outline-light m-3" %>
-  </div>
+  <h1>Welcome to SmartFoods</h1>
+  <p>Find the right foods, personalized just for you, so you can achieve your health goals.</p>
+  <%= link_to "Get Started", new_user_goal_path, type: "button", class: "btn btn-outline-light m-3" %>
 </div>
 
-<div class="container py-5 px-0">
+<div class="container py-5">
   <h1>How it works</h1>
-  <ul class="d-flex p-0 py-5 m-0 row">
-    <li class="card col-6 col-lg-3 small-card px-0">
+  <ul class="d-flex py-5 row">
+    <li class="small-card col-6 col-lg-3">
       <%= image_tag "mangoals.svg" %>
       <h3>Set your goals</h3>
       <p>Which areas in your life would you like to improve? Narrow your focus, and you will see the positive ripple effect.</p>
     </li>
-    <li class="card col-6 col-lg-3 small-card">
+    <li class="small-card col-6 col-lg-3">
       <%= image_tag "food.svg" %>
       <h3>Discover your foods</h3>
       <p>Food is supposed to nourish us so we can feel our best! We help you find the right foods targeted for your needs.</p>
     </li>
-    <li class="card col-6 col-lg-3 small-card">
+    <li class="small-card col-6 col-lg-3">
       <%= image_tag "cooking.svg" %>
       <h3>Search recipes</h3>
       <p>Now that you know what you should eat, what do you do with it? Search through our recipes and save your favorites!</p>
     </li>
-    <li class="card col-6 col-lg-3 small-card px-0">
+    <li class="small-card col-6 col-lg-3">
       <%= image_tag "goals.svg" %>
       <h3>Track your progress</h3>
       <p>Log your journey in becoming the best version of yourself. You are your greatest investment! Keep going! </p>
@@ -32,14 +30,12 @@
   </ul>
 </div>
 
-<div class="big-card">
-  <div class="row justify-content-between align-items-center m-0">
-    <div class="col-12 col-md-6 p-0">
-      <%= image_tag "guy.png"%>
-    </div>
-    <div class="col-12 col-md-6 p-3">
-      <h3>Our Mission</h3>
-      <p><em>We want to make it easier to choose your foods wisely, with intention. We all know vegetables are good for you, but why are they good for you? Each fruit and vegetable have a purpose just like you and me. We want to empower consumers to take more educated choices when choosing what foods they eat. To be more aware of how they elevate our mental and physical health and appreciate their wonderous work in every bite.</em></p>
-    </div>
+<div class="big-card row">
+  <div class="col-12 col-lg-6 p-0">
+    <%= image_tag "guy.png"%>
+  </div>
+  <div class="col-12 col-lg-6 p-4">
+    <h3>Our Mission</h3>
+    <p><em>We want to make it easier to choose your foods wisely, with intention. We all know vegetables are good for you, but why are they good for you? Each fruit and vegetable have a purpose just like you and me. We want to empower consumers to take more educated choices when choosing what foods they eat. To be more aware of how they elevate our mental and physical health and appreciate their wonderous work in every bite.</em></p>
   </div>
 </div>
